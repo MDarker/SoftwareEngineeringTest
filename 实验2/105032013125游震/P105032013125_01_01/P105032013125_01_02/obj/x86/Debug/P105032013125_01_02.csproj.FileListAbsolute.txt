@@ -1,0 +1,17 @@
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\bin\Debug\P105032013125_01_02.exe
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\bin\Debug\P105032013125_01_02.pdb
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.Properties.Resources.resources
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.exe
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.pdb
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\bin\Debug\P105032013125_01_02.exe
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\bin\Debug\P105032013125_01_02.pdb
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.Properties.Resources.resources
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.exe
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.pdb
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_02\obj\x86\Debug\P105032013125_01_02.Form1.resources

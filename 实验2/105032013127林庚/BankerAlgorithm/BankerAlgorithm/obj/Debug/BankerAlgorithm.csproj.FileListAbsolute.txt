@@ -1,0 +1,6 @@
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\bin\Debug\BankerAlgorithm.exe.config
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\obj\Debug\BankerAlgorithm.csprojResolveAssemblyReference.cache
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\bin\Debug\BankerAlgorithm.exe
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\bin\Debug\BankerAlgorithm.pdb
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\obj\Debug\BankerAlgorithm.exe
+C:\Users\LinG\Desktop\BankerAlgorithm\BankerAlgorithm\obj\Debug\BankerAlgorithm.pdb

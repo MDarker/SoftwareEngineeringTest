@@ -1,0 +1,8 @@
+C:\Documents and Settings\Administrator\桌面\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_01\bin\Debug\P105032013125_01_01.exe
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_01\bin\Debug\P105032013125_01_01.pdb
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\P105032013125_01_01.exe
+C:\Documents and Settings\Administrator\桌面\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\P105032013125_01_01.pdb
+H:\大3\C#.NET\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\P105032013125_01_01.exe
+H:\大3\C#.NET\实验1\新建文件夹\P105032013125_01_01\P105032013125_01_01\obj\x86\Debug\P105032013125_01_01.pdb

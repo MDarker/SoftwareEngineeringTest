@@ -1,0 +1,16 @@
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\bin\Debug\CinemaBLL.dll
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\bin\Debug\CinemaBLL.pdb
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\bin\Debug\CinemaDAL.dll
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\bin\Debug\CinemaDAL.pdb
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\obj\Debug\CinemaBLL.csprojResolveAssemblyReference.cache
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\obj\Debug\CinemaBLL.dll
+C:\Users\LinG\Desktop\Cinema\CinemaBLL\obj\Debug\CinemaBLL.pdb
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaBLL.dll
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaBLL.pdb
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaDAL.dll
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaSQL.dll
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaDAL.pdb
+E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaSQL.pdb
+E:\学习\大三\C#实验\Cinema\CinemaBLL\obj\Debug\CinemaBLL.csprojResolveAssemblyReference.cache
+E:\学习\大三\C#实验\Cinema\CinemaBLL\obj\Debug\CinemaBLL.dll
+E:\学习\大三\C#实验\Cinema\CinemaBLL\obj\Debug\CinemaBLL.pdb

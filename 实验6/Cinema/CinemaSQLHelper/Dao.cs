@@ -38,8 +38,6 @@ namespace CinemaSQLHelper
         }
         #endregion
 
-        private static SqlConnection connReader;
-
         #region ExecuteReader,查询数据
         /// <summary>
         /// ExecuteReader,查询数据
@@ -49,21 +47,12 @@ namespace CinemaSQLHelper
         /// <returns></returns>
         public static SqlDataReader ExecuteReader(string sql, params SqlParameter[] paras)
         {
-            connReader = new SqlConnection(conStr);
+            SqlConnection connReader = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
             Prepare(connReader, cmd, sql, paras);//进行通道连接,执行命令对象赋值
-            return cmd.ExecuteReader();
+            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
         #endregion
-
-        /// <summary>
-        /// 用于关闭ExecuteReader的连接通道
-        /// </summary>
-        /// <returns></returns>
-        public static void CloseConnReader()
-        {
-            connReader.Close();
-        }
 
         /// <summary>
         /// 执行查询，返回第一行第一列的值

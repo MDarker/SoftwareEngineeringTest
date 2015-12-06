@@ -42,9 +42,14 @@
     <Compile Include="FilmMsgBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FilmScheduleBLL.cs" />
     <Compile Include="VideoHallBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CinemaCommon\CinemaCommon.csproj">
+      <Project>{252397ff-f4db-4003-86bd-e5a40c5a6ce4}</Project>
+      <Name>CinemaCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CinemaDAL\CinemaDAL.csproj">
       <Project>{2076caad-3e2c-471e-a8ff-326b9ae49f54}</Project>
       <Name>CinemaDAL</Name>

@@ -151,6 +151,10 @@
       <Project>{f5741591-b9cf-4980-900b-00906daa74b9}</Project>
       <Name>CinemaBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CinemaCommon\CinemaCommon.csproj">
+      <Project>{252397ff-f4db-4003-86bd-e5a40c5a6ce4}</Project>
+      <Name>CinemaCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

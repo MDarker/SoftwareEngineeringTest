@@ -1,0 +1,5 @@
+E:\学习\大三\C#实验\Cinema\CinemaCommon\bin\Debug\CinemaCommon.dll
+E:\学习\大三\C#实验\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
+E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.csprojResolveAssemblyReference.cache
+E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
+E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb

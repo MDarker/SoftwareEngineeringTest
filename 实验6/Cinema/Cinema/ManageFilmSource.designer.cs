@@ -38,6 +38,7 @@
             this.Name = "ManageFilmSource";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FilmSource";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageFilmSource_FormClosed);
             this.ResumeLayout(false);
 
         }

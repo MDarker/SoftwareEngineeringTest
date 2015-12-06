@@ -15,9 +15,16 @@ namespace Cinema
     /// </summary>
     public partial class ManageVideoHall : Form
     {
-        public ManageVideoHall()
+        private SellTicket sellTicket;
+        public ManageVideoHall(SellTicket sellTicket)
         {
             InitializeComponent();
+            this.sellTicket = sellTicket;
+        }
+
+        private void ManageVideoHall_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            sellTicket.Show();//窗口关闭时，主窗体显示
         }
     }
 }

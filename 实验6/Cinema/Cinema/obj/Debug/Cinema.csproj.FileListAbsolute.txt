@@ -36,3 +36,5 @@ E:\学习\大三\C#实验\Cinema\Cinema\obj\Debug\Cinema.Properties.Resources.re
 E:\学习\大三\C#实验\Cinema\Cinema\obj\Debug\Cinema.SellTicket.resources
 E:\学习\大三\C#实验\Cinema\Cinema\obj\Debug\Cinema.csproj.GenerateResource.Cache
 E:\学习\大三\C#实验\Cinema\Cinema\obj\Debug\Cinema.exe.licenses
+E:\学习\大三\C#实验\Cinema\Cinema\bin\Debug\CinemaCommon.dll
+E:\学习\大三\C#实验\Cinema\Cinema\bin\Debug\CinemaCommon.pdb

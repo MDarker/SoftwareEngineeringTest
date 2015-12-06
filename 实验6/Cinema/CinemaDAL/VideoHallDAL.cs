@@ -11,10 +11,10 @@ namespace CinemaDAL
 {
     public class VideoHallDAL
     {
-        public void GetVideoHallNO()
+        public SqlDataReader GetVideoHallNO()
         {
-            string sql = "";
-            //Dao.ExecuteReader(sql, null);
+            string sql = " select VideoHallId from VideoHall order by VideoHallId ";
+            return Dao.ExecuteReader(sql, null);
         }
     }
 }

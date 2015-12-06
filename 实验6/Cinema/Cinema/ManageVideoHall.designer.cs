@@ -38,6 +38,7 @@
             this.Name = "ManageVideoHall";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VideoHall";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageVideoHall_FormClosed);
             this.ResumeLayout(false);
 
         }

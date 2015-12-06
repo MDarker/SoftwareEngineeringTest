@@ -12,3 +12,5 @@ E:\学习\大三\C#实验\Cinema\CinemaDAL\bin\Debug\CinemaSQL.pdb
 E:\学习\大三\C#实验\Cinema\CinemaDAL\obj\Debug\CinemaDAL.csprojResolveAssemblyReference.cache
 E:\学习\大三\C#实验\Cinema\CinemaDAL\obj\Debug\CinemaDAL.dll
 E:\学习\大三\C#实验\Cinema\CinemaDAL\obj\Debug\CinemaDAL.pdb
+E:\学习\大三\C#实验\Cinema\CinemaDAL\bin\Debug\CinemaCommon.dll
+E:\学习\大三\C#实验\Cinema\CinemaDAL\bin\Debug\CinemaCommon.pdb

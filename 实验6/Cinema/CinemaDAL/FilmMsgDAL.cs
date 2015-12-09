@@ -24,17 +24,6 @@ namespace CinemaDAL
         }
 
         /// <summary>
-        /// 获取已经排的影片信息
-        /// </summary>
-        /// <returns></returns>
-        public DataTable GetScheduledFilm()
-        {
-            string sql = " select FilmId,FilmName,VideoHallId,FilmBeginTime,FilmEndTime " +
-                " from dbo.FilmSchedule ";
-            return Dao.GetDataSet(sql);
-        }
-
-        /// <summary>
         /// 记录排片次数  加 
         /// </summary>
         /// <param name="filmId"></param>

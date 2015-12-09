@@ -17,7 +17,7 @@ namespace CinemaBLL
         {
             SqlDataReader sdr = videoHall.GetVideoHallNO();
             List<CommonVideoHall> list = new List<CommonVideoHall>();
-            if (sdr.HasRows)
+            if (sdr != null)
             {
                 while (sdr.Read())
                 {
@@ -25,8 +25,8 @@ namespace CinemaBLL
                     v.Id = (int)sdr[0];//Id
                     list.Add(v);
                 }
+                sdr.Close();
             }
-            sdr.Close();
             return list;
         }
     }

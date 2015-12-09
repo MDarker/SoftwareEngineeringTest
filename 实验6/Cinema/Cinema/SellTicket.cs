@@ -84,6 +84,11 @@ namespace Cinema
             this.Hide();
         }
 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menu_login_Click(object sender, EventArgs e)
         {
             if (!isLogin)

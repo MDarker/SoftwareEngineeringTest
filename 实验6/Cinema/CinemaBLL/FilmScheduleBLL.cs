@@ -21,7 +21,7 @@ namespace CinemaBLL
         {
             SqlDataReader sdr = filmSchedule.GetFilmBeginTime();
             List<CommonSchedule> list = new List<CommonSchedule>();
-            if (sdr.HasRows)
+            if (sdr != null)
             {
                 while (sdr.Read())
                 {
@@ -30,9 +30,18 @@ namespace CinemaBLL
                     s.Time = sdr[1].ToString();//Time
                     list.Add(s);
                 }
+                sdr.Close();
             }
-            sdr.Close();
             return list;
+        }
+
+        /// <summary>
+        /// 获取已经排的影片信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetScheduledFilm()
+        {
+            return filmSchedule.GetScheduledFilm();
         }
 
         /// <summary>
@@ -52,9 +61,9 @@ namespace CinemaBLL
         /// </summary>
         /// <param name="cfilmSchedule"></param>
         /// <returns></returns>
-        public bool ModifyScheduledFilm(CommonFilmSchedule cfilmSchedule)
+        public bool ModifyScheduledFilm(int scheduleId, CommonFilmSchedule cfilmSchedule)
         {
-            if (filmSchedule.ModifyScheduledFilm(cfilmSchedule) > 0)
+            if (filmSchedule.ModifyScheduledFilm(scheduleId, cfilmSchedule) > 0)
             {
                 return true;
             }
@@ -66,12 +75,29 @@ namespace CinemaBLL
         /// </summary>
         /// <param name="filmId"></param>
         /// <returns></returns>
-        public bool DeletScheduledFilm(int filmId)
+        public bool DeletScheduledFilm(int scheduleId)
         {
-            if (filmSchedule.DeletScheduledFilm(filmId) > 0)
+            if (filmSchedule.DeletScheduledFilm(scheduleId) > 0)
             {
                 return true;
             }
+            return false;
+        }
+
+        /// <summary>
+        /// 检查排片时间段是否重合
+        /// </summary>
+        /// <param name="cfilmSchedule"></param>
+        /// <param name="op"></param>
+        /// <returns></returns>
+        public bool IsScheduleTimeRepeat(CommonFilmSchedule cfilmSchedule)
+        {
+            int obj = (int)filmSchedule.IsScheduleTimeRepeat(cfilmSchedule.VideoHallId, cfilmSchedule.FilmBeginId, cfilmSchedule.FilmEndId);
+            if (obj > 0)
+            {
+                return true;
+            }
+
             return false;
         }
     }

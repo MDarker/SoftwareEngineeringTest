@@ -31,11 +31,11 @@ namespace Cinema
         {
             string id = txt_id.Text.Trim();
             string pwd = txt_pwd.Text.Trim();
-            //if (!cb.CheckLogin(id, pwd))
-            //{
-            //    MessageBox.Show("用户名或密码错误!!");
-            //    return;
-            //}
+            if (!login.CheckLogin(id, pwd))
+            {
+                MessageBox.Show("用户名或密码错误!!");
+                return;
+            }
             this.DialogResult = DialogResult.Yes;
         }
     }

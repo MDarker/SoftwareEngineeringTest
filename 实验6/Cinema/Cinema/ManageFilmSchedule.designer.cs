@@ -49,6 +49,7 @@
             this.rdo_onshelve = new System.Windows.Forms.RadioButton();
             this.rdo_unshelve = new System.Windows.Forms.RadioButton();
             this.lbl_filmId = new System.Windows.Forms.Label();
+            this.lbl_scheduleId = new System.Windows.Forms.Label();
             this.grp_schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_filmSchedule)).BeginInit();
             this.SuspendLayout();
@@ -240,17 +241,27 @@
             // lbl_filmId
             // 
             this.lbl_filmId.AutoSize = true;
-            this.lbl_filmId.Location = new System.Drawing.Point(223, 342);
+            this.lbl_filmId.Location = new System.Drawing.Point(238, 248);
             this.lbl_filmId.Name = "lbl_filmId";
             this.lbl_filmId.Size = new System.Drawing.Size(83, 12);
             this.lbl_filmId.TabIndex = 17;
             this.lbl_filmId.Text = "影片Id-不可见";
+            // 
+            // lbl_scheduleId
+            // 
+            this.lbl_scheduleId.AutoSize = true;
+            this.lbl_scheduleId.Location = new System.Drawing.Point(238, 341);
+            this.lbl_scheduleId.Name = "lbl_scheduleId";
+            this.lbl_scheduleId.Size = new System.Drawing.Size(83, 12);
+            this.lbl_scheduleId.TabIndex = 18;
+            this.lbl_scheduleId.Text = "排片id-不可见";
             // 
             // ManageFilmSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 389);
+            this.Controls.Add(this.lbl_scheduleId);
             this.Controls.Add(this.lbl_filmId);
             this.Controls.Add(this.rdo_unshelve);
             this.Controls.Add(this.rdo_onshelve);
@@ -265,6 +276,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grp_schedule);
+            this.MaximizeBox = false;
             this.Name = "ManageFilmSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "排片";
@@ -296,5 +308,6 @@
         private System.Windows.Forms.RadioButton rdo_onshelve;
         private System.Windows.Forms.RadioButton rdo_unshelve;
         private System.Windows.Forms.Label lbl_filmId;
+        private System.Windows.Forms.Label lbl_scheduleId;
     }
 }

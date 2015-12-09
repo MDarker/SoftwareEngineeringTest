@@ -22,15 +22,6 @@ namespace CinemaBLL
         }
 
         /// <summary>
-        /// 获取已经排的影片信息
-        /// </summary>
-        /// <returns></returns>
-        public DataTable GetScheduledFilm()
-        {
-            return filmMsg.GetScheduledFilm();
-        }
-
-        /// <summary>
         /// 记录排片次数  加 
         /// </summary>
         /// <param name="filmId"></param>

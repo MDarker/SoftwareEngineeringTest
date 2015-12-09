@@ -13,6 +13,8 @@ namespace CinemaCommon
         public int VideoHallId { get; set; }
         public string FilmBeginTime { get; set; }
         public string FilmEndTime { get; set; }
+        public int FilmBeginId { get; set; }
+        public int FilmEndId { get; set; }
 
     }
 }

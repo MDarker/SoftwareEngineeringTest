@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_id = new DevExpress.XtraEditors.TextEdit();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_pwd = new DevExpress.XtraEditors.TextEdit();
             this.btn_login = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_id.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_pwd.Properties)).BeginInit();
+            this.txt_pwd = new System.Windows.Forms.TextBox();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -46,13 +44,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "工号：";
             // 
-            // txt_id
-            // 
-            this.txt_id.Location = new System.Drawing.Point(81, 16);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(100, 20);
-            this.txt_id.TabIndex = 1;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -61,13 +52,6 @@
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "密码：";
-            // 
-            // txt_pwd
-            // 
-            this.txt_pwd.Location = new System.Drawing.Point(81, 55);
-            this.txt_pwd.Name = "txt_pwd";
-            this.txt_pwd.Size = new System.Drawing.Size(100, 20);
-            this.txt_pwd.TabIndex = 2;
             // 
             // btn_login
             // 
@@ -79,15 +63,32 @@
             this.btn_login.UseVisualStyleBackColor = true;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
+            // txt_pwd
+            // 
+            this.txt_pwd.Location = new System.Drawing.Point(74, 57);
+            this.txt_pwd.Name = "txt_pwd";
+            this.txt_pwd.PasswordChar = '●';
+            this.txt_pwd.Size = new System.Drawing.Size(100, 21);
+            this.txt_pwd.TabIndex = 2;
+            this.txt_pwd.Text = "123456";
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(74, 16);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(100, 21);
+            this.txt_id.TabIndex = 1;
+            this.txt_id.Text = "1000";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(209, 121);
-            this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.txt_pwd);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_id);
+            this.Controls.Add(this.txt_pwd);
+            this.Controls.Add(this.btn_login);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -95,8 +96,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "登录";
-            ((System.ComponentModel.ISupportInitialize)(this.txt_id.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_pwd.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,10 +104,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.TextEdit txt_id;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.TextEdit txt_pwd;
         private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.TextBox txt_pwd;
+        private System.Windows.Forms.TextBox txt_id;
 
     }
 }

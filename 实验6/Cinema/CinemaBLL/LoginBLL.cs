@@ -19,7 +19,15 @@ namespace CinemaBLL
         /// <returns></returns>
         public bool CheckLogin(string id, string pwd)
         {
-            ld.CheckLogin(id, pwd);
+            Object obj=ld.CheckLogin(id, pwd);
+            if (obj != null)
+            {
+                int i = Convert.ToInt32(obj);
+                if (i > 0)
+                {
+                    return true;
+                }
+            }
             return false;
         }
     }

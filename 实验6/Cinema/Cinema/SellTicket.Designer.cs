@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("8:00-9:45");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("10:00-11:45");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("功夫", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("12:00-13:45");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("14:00-15:45");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("疯狂的石头", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("16:00-17:45");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("18:00-19:45");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("蜘蛛人3", new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("13:00-14:45");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("15:00-16:45");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("终结者", new System.Windows.Forms.TreeNode[] {
-            treeNode22,
-            treeNode23});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("8:00-9:45");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("10:00-11:45");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("功夫", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("12:00-13:45");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("14:00-15:45");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("疯狂的石头", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("16:00-17:45");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("18:00-19:45");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("蜘蛛人3", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("13:00-14:45");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("15:00-16:45");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("终结者", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellTicket));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu_buyTicket = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +55,7 @@
             this.menu_videoHallManage = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_filmSourceManage = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_filmSchedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_login = new System.Windows.Forms.ToolStripMenuItem();
             this.tabpage_films = new System.Windows.Forms.TabPage();
             this.trv1_movieList = new System.Windows.Forms.TreeView();
             this.tabcon_showList = new System.Windows.Forms.TabControl();
@@ -125,7 +126,6 @@
             this.linkLb1_2 = new System.Windows.Forms.LinkLabel();
             this.linkLb1_1 = new System.Windows.Forms.LinkLabel();
             this.btn_confirm = new DevExpress.XtraEditors.SimpleButton();
-            this.menu_login = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabpage_films.SuspendLayout();
             this.tabcon_showList.SuspendLayout();
@@ -172,23 +172,30 @@
             // menu_videoHallManage
             // 
             this.menu_videoHallManage.Name = "menu_videoHallManage";
-            this.menu_videoHallManage.Size = new System.Drawing.Size(152, 22);
+            this.menu_videoHallManage.Size = new System.Drawing.Size(136, 22);
             this.menu_videoHallManage.Text = "放映厅管理";
             this.menu_videoHallManage.Click += new System.EventHandler(this.menu_videoHallManage_Click);
             // 
             // menu_filmSourceManage
             // 
             this.menu_filmSourceManage.Name = "menu_filmSourceManage";
-            this.menu_filmSourceManage.Size = new System.Drawing.Size(152, 22);
+            this.menu_filmSourceManage.Size = new System.Drawing.Size(136, 22);
             this.menu_filmSourceManage.Text = "片源管理";
             this.menu_filmSourceManage.Click += new System.EventHandler(this.menu_filmSourceManage_Click);
             // 
             // menu_filmSchedule
             // 
             this.menu_filmSchedule.Name = "menu_filmSchedule";
-            this.menu_filmSchedule.Size = new System.Drawing.Size(152, 22);
+            this.menu_filmSchedule.Size = new System.Drawing.Size(136, 22);
             this.menu_filmSchedule.Text = "排片";
             this.menu_filmSchedule.Click += new System.EventHandler(this.menu_filmSchedule_Click);
+            // 
+            // menu_login
+            // 
+            this.menu_login.Name = "menu_login";
+            this.menu_login.Size = new System.Drawing.Size(48, 21);
+            this.menu_login.Text = "登录 ";
+            this.menu_login.Click += new System.EventHandler(this.menu_login_Click);
             // 
             // tabpage_films
             // 
@@ -207,35 +214,35 @@
             this.trv1_movieList.Location = new System.Drawing.Point(5, 13);
             this.trv1_movieList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trv1_movieList.Name = "trv1_movieList";
-            treeNode13.Name = "节点1";
-            treeNode13.Text = "8:00-9:45";
-            treeNode14.Name = "节点4";
-            treeNode14.Text = "10:00-11:45";
-            treeNode15.Name = "";
-            treeNode15.Text = "功夫";
-            treeNode16.Name = "节点5";
-            treeNode16.Text = "12:00-13:45";
-            treeNode17.Name = "节点6";
-            treeNode17.Text = "14:00-15:45";
-            treeNode18.Name = "节点3";
-            treeNode18.Text = "疯狂的石头";
-            treeNode19.Name = "节点8";
-            treeNode19.Text = "16:00-17:45";
-            treeNode20.Name = "节点9";
-            treeNode20.Text = "18:00-19:45";
-            treeNode21.Name = "节点7";
-            treeNode21.Text = "蜘蛛人3";
-            treeNode22.Name = "节点11";
-            treeNode22.Text = "13:00-14:45";
-            treeNode23.Name = "节点12";
-            treeNode23.Text = "15:00-16:45";
-            treeNode24.Name = "节点10";
-            treeNode24.Text = "终结者";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "8:00-9:45";
+            treeNode2.Name = "节点4";
+            treeNode2.Text = "10:00-11:45";
+            treeNode3.Name = "";
+            treeNode3.Text = "功夫";
+            treeNode4.Name = "节点5";
+            treeNode4.Text = "12:00-13:45";
+            treeNode5.Name = "节点6";
+            treeNode5.Text = "14:00-15:45";
+            treeNode6.Name = "节点3";
+            treeNode6.Text = "疯狂的石头";
+            treeNode7.Name = "节点8";
+            treeNode7.Text = "16:00-17:45";
+            treeNode8.Name = "节点9";
+            treeNode8.Text = "18:00-19:45";
+            treeNode9.Name = "节点7";
+            treeNode9.Text = "蜘蛛人3";
+            treeNode10.Name = "节点11";
+            treeNode10.Text = "13:00-14:45";
+            treeNode11.Name = "节点12";
+            treeNode11.Text = "15:00-16:45";
+            treeNode12.Name = "节点10";
+            treeNode12.Text = "终结者";
             this.trv1_movieList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode18,
-            treeNode21,
-            treeNode24});
+            treeNode3,
+            treeNode6,
+            treeNode9,
+            treeNode12});
             this.trv1_movieList.Size = new System.Drawing.Size(144, 398);
             this.trv1_movieList.TabIndex = 0;
             // 
@@ -942,13 +949,6 @@
             this.btn_confirm.TabIndex = 6;
             this.btn_confirm.Text = "确定";
             // 
-            // menu_login
-            // 
-            this.menu_login.Name = "menu_login";
-            this.menu_login.Size = new System.Drawing.Size(48, 21);
-            this.menu_login.Text = "登录 ";
-            this.menu_login.Click += new System.EventHandler(this.menu_login_Click);
-            // 
             // SellTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -962,6 +962,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
             this.Name = "SellTicket";
             this.Text = "影院售票系统";
             this.menuStrip1.ResumeLayout(false);

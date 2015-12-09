@@ -50,7 +50,13 @@ namespace CinemaSQLHelper
             SqlConnection connReader = new SqlConnection(conStr);
             SqlCommand cmd = new SqlCommand();
             Prepare(connReader, cmd, sql, paras);//进行通道连接,执行命令对象赋值
-            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            SqlDataReader sdr = null;
+            //try
+            //{
+                sdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            //}
+            //catch (SqlException e) { }
+            return sdr;
         }
         #endregion
 
@@ -66,7 +72,13 @@ namespace CinemaSQLHelper
             {
                 SqlCommand cmd = new SqlCommand();
                 Prepare(conn, cmd, sql, paras);//进行通道连接,执行命令对象赋值
-                return cmd.ExecuteScalar();
+                Object obj = null;
+                //try
+                //{
+                    obj = cmd.ExecuteScalar();
+                //}
+                //catch (SqlException e) { }
+                return obj;
             }
         }
 
@@ -79,7 +91,13 @@ namespace CinemaSQLHelper
             {
                 SqlCommand cmd = new SqlCommand();
                 Prepare(conn, cmd, sql, paras);
-                return cmd.ExecuteNonQuery();
+                int re = 0;
+                //try
+                //{
+                    re = cmd.ExecuteNonQuery();
+                //}
+                //catch (SqlException e) { }
+                return re;
             }
         }
 

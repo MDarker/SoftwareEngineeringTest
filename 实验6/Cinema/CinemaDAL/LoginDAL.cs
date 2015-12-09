@@ -16,17 +16,17 @@ namespace CinemaDAL
         /// </summary>
         /// <param name="id"></param>
         /// <param name="pwd"></param>
-        public void CheckLogin(string id, string pwd)
+        public Object CheckLogin(string id, string pwd)
         {
-            string sql = " select COUNT(*) from Admit " +
-                " where id=@id and pwd=@pwd ";
-
+            string sql = " select COUNT(*) from AdminMsg " +
+                " where AdminId=@id and AdminPwd=@pwd ";
             SqlParameter[] paras ={
                                       new SqlParameter("@id",SqlDbType.VarChar,10),
                                       new SqlParameter("@pwd",SqlDbType.VarChar,50)
                                  };
-
-            Dao.ExecuteScalar(sql, paras);
+            paras[0].Value = id;
+            paras[1].Value = pwd;
+            return Dao.ExecuteScalar(sql, paras);
         }
     }
 }

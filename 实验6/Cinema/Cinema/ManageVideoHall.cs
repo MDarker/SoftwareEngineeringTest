@@ -26,5 +26,12 @@ namespace Cinema
         {
             sellTicket.Show();//窗口关闭时，主窗体显示
         }
+
+        private void btn_Modify_Click(object sender, EventArgs e)
+        {
+            dgv_VideoHallM.ReadOnly = true;
+            btn_Modify.Text = "保存更改";
+            MessageBox.Show("可以在表格中修改数据了");
+        }
     }
 }

@@ -8,3 +8,8 @@ E:\学习\大三\C#实验\Cinema\CinemaSQLHelper\bin\Debug\CinemaSQL.pdb
 E:\学习\大三\C#实验\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQLHelper.csprojResolveAssemblyReference.cache
 E:\学习\大三\C#实验\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQL.dll
 E:\学习\大三\C#实验\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQL.pdb
+E:\Cinema\CinemaSQLHelper\bin\Debug\CinemaSQL.dll
+E:\Cinema\CinemaSQLHelper\bin\Debug\CinemaSQL.pdb
+E:\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQLHelper.csprojResolveAssemblyReference.cache
+E:\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQL.dll
+E:\Cinema\CinemaSQLHelper\obj\Debug\CinemaSQL.pdb

@@ -29,7 +29,7 @@ namespace CinemaDAL
         public DataTable GetScheduledFilm()
         {
             string sql = " select ScheduleId,FilmId,FilmName,VideoHallId,FilmBeginTime,FilmEndTime " +
-                " from dbo.FilmSchedule ";
+                " from dbo.FilmSchedule order by FilmBeginId ";
             return Dao.GetDataSet(sql);
         }
 

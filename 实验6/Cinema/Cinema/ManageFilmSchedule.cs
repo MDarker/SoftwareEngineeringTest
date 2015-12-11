@@ -122,7 +122,10 @@ namespace Cinema
             }
             CommonFilmSchedule cfilmSchedule = new CommonFilmSchedule();
             //将控件数据存入CommonFilmSchedule类
-            ControlsToCommon(filmId, cfilmSchedule);
+            if(!ControlsToCommon(filmId, cfilmSchedule))
+            {
+                return;
+            }
 
             //已排情况下,点击下架
             if (rdo_unshelve.Checked)
@@ -149,7 +152,7 @@ namespace Cinema
         /// <summary>
         /// 将控件数据存入CommonFilmSchedule类
         /// </summary>
-        private void ControlsToCommon(int filmId, CommonFilmSchedule cfilmSchedule)
+        private bool ControlsToCommon(int filmId, CommonFilmSchedule cfilmSchedule)
         {
             //将控件数据存入CommonFilmSchedule类
             cfilmSchedule.FilmId = filmId;
@@ -157,19 +160,20 @@ namespace Cinema
             if (cbo_videoHallNO.Text.Contains("请选择"))
             {
                 MessageBox.Show("请选择放映厅");
-                return;
+                return false;
             }
             cfilmSchedule.VideoHallId = (int)cbo_videoHallNO.SelectedValue;
             CommonSchedule schedule = (CommonSchedule)cbo_filmBeginTime.SelectedItem;
             if (schedule.Time.Contains("请选择"))
             {
                 MessageBox.Show("请选择影片开始时间");
-                return;
+                return false;
             }
             cfilmSchedule.FilmBeginTime = schedule.Time;
             cfilmSchedule.FilmEndTime = txt_filmEndTime.Text;
             cfilmSchedule.FilmBeginId = schedule.Id;
             cfilmSchedule.FilmEndId = schedule.Id + 5;
+            return true;
         }
 
         /// <summary>

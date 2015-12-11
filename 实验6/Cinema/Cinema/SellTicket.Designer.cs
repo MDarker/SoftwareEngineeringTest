@@ -28,26 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("8:00-9:45");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("10:00-11:45");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("功夫", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("12:00-13:45");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("14:00-15:45");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("疯狂的石头", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("16:00-17:45");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("18:00-19:45");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("蜘蛛人3", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("13:00-14:45");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("15:00-16:45");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("终结者", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11});
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellTicket));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu_buyTicket = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +38,7 @@
             this.menu_filmSchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_login = new System.Windows.Forms.ToolStripMenuItem();
             this.tabpage_films = new System.Windows.Forms.TabPage();
+            this.cboReleaseDate = new System.Windows.Forms.ComboBox();
             this.trv1_movieList = new System.Windows.Forms.TreeView();
             this.tabcon_showList = new System.Windows.Forms.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,7 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_bestPrice = new System.Windows.Forms.Label();
             this.lbl_price = new System.Windows.Forms.Label();
-            this.lbl_showTime = new System.Windows.Forms.Label();
+            this.lbl_filmTime = new System.Windows.Forms.Label();
             this.lbl_filmType = new System.Windows.Forms.Label();
             this.lbl_protagonist = new System.Windows.Forms.Label();
             this.pic_filmImg = new System.Windows.Forms.PictureBox();
@@ -84,7 +66,7 @@
             this.rdo_comTicket = new System.Windows.Forms.RadioButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tabcon_videoHall = new System.Windows.Forms.TabControl();
-            this.tabpage_seats = new System.Windows.Forms.TabPage();
+            this.tp_videoHall1 = new System.Windows.Forms.TabPage();
             this.linkLb5_8 = new System.Windows.Forms.LinkLabel();
             this.linkLb4_8 = new System.Windows.Forms.LinkLabel();
             this.linkLb3_8 = new System.Windows.Forms.LinkLabel();
@@ -125,7 +107,50 @@
             this.linkLb2_1 = new System.Windows.Forms.LinkLabel();
             this.linkLb1_2 = new System.Windows.Forms.LinkLabel();
             this.linkLb1_1 = new System.Windows.Forms.LinkLabel();
+            this.tp_videoHall2 = new System.Windows.Forms.TabPage();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel9 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel10 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel11 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel12 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel13 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel14 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel15 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel16 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel17 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel18 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel19 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel20 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel21 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel22 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel23 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel24 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel25 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel26 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel27 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel28 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel29 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel30 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel31 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel32 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel33 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel34 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel35 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel36 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel37 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel38 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel39 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel40 = new System.Windows.Forms.LinkLabel();
             this.btn_confirm = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGiver = new DevExpress.XtraEditors.SimpleButton();
+            this.imgLIst_FilmPic = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabpage_films.SuspendLayout();
             this.tabcon_showList.SuspendLayout();
@@ -135,7 +160,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_giver.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbo_discount.Properties)).BeginInit();
             this.tabcon_videoHall.SuspendLayout();
-            this.tabpage_seats.SuspendLayout();
+            this.tp_videoHall1.SuspendLayout();
+            this.tp_videoHall2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -199,6 +225,7 @@
             // 
             // tabpage_films
             // 
+            this.tabpage_films.Controls.Add(this.cboReleaseDate);
             this.tabpage_films.Controls.Add(this.trv1_movieList);
             this.tabpage_films.Location = new System.Drawing.Point(4, 23);
             this.tabpage_films.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -209,42 +236,24 @@
             this.tabpage_films.Text = "放映列表";
             this.tabpage_films.UseVisualStyleBackColor = true;
             // 
+            // cboReleaseDate
+            // 
+            this.cboReleaseDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboReleaseDate.FormattingEnabled = true;
+            this.cboReleaseDate.Location = new System.Drawing.Point(-2, 2);
+            this.cboReleaseDate.Name = "cboReleaseDate";
+            this.cboReleaseDate.Size = new System.Drawing.Size(154, 22);
+            this.cboReleaseDate.TabIndex = 1;
+            this.cboReleaseDate.TextChanged += new System.EventHandler(this.cboReleaseDate_TextChanged);
+            // 
             // trv1_movieList
             // 
-            this.trv1_movieList.Location = new System.Drawing.Point(5, 13);
+            this.trv1_movieList.Location = new System.Drawing.Point(3, 24);
             this.trv1_movieList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trv1_movieList.Name = "trv1_movieList";
-            treeNode1.Name = "节点1";
-            treeNode1.Text = "8:00-9:45";
-            treeNode2.Name = "节点4";
-            treeNode2.Text = "10:00-11:45";
-            treeNode3.Name = "";
-            treeNode3.Text = "功夫";
-            treeNode4.Name = "节点5";
-            treeNode4.Text = "12:00-13:45";
-            treeNode5.Name = "节点6";
-            treeNode5.Text = "14:00-15:45";
-            treeNode6.Name = "节点3";
-            treeNode6.Text = "疯狂的石头";
-            treeNode7.Name = "节点8";
-            treeNode7.Text = "16:00-17:45";
-            treeNode8.Name = "节点9";
-            treeNode8.Text = "18:00-19:45";
-            treeNode9.Name = "节点7";
-            treeNode9.Text = "蜘蛛人3";
-            treeNode10.Name = "节点11";
-            treeNode10.Text = "13:00-14:45";
-            treeNode11.Name = "节点12";
-            treeNode11.Text = "15:00-16:45";
-            treeNode12.Name = "节点10";
-            treeNode12.Text = "终结者";
-            this.trv1_movieList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode6,
-            treeNode9,
-            treeNode12});
-            this.trv1_movieList.Size = new System.Drawing.Size(144, 398);
+            this.trv1_movieList.Size = new System.Drawing.Size(147, 389);
             this.trv1_movieList.TabIndex = 0;
+            this.trv1_movieList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv1_movieList_AfterSelect);
             // 
             // tabcon_showList
             // 
@@ -267,7 +276,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbl_bestPrice);
             this.groupBox1.Controls.Add(this.lbl_price);
-            this.groupBox1.Controls.Add(this.lbl_showTime);
+            this.groupBox1.Controls.Add(this.lbl_filmTime);
             this.groupBox1.Controls.Add(this.lbl_filmType);
             this.groupBox1.Controls.Add(this.lbl_protagonist);
             this.groupBox1.Controls.Add(this.pic_filmImg);
@@ -303,11 +312,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(148, 110);
+            this.label11.Location = new System.Drawing.Point(176, 110);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 14);
+            this.label11.Size = new System.Drawing.Size(43, 14);
             this.label11.TabIndex = 12;
-            this.label11.Text = "放映时间：";
+            this.label11.Text = "片长：";
             // 
             // label10
             // 
@@ -348,7 +357,7 @@
             // lbl_bestPrice
             // 
             this.lbl_bestPrice.AutoSize = true;
-            this.lbl_bestPrice.Location = new System.Drawing.Point(222, 162);
+            this.lbl_bestPrice.Location = new System.Drawing.Point(221, 161);
             this.lbl_bestPrice.Name = "lbl_bestPrice";
             this.lbl_bestPrice.Size = new System.Drawing.Size(50, 14);
             this.lbl_bestPrice.TabIndex = 7;
@@ -357,20 +366,20 @@
             // lbl_price
             // 
             this.lbl_price.AutoSize = true;
-            this.lbl_price.Location = new System.Drawing.Point(222, 135);
+            this.lbl_price.Location = new System.Drawing.Point(221, 135);
             this.lbl_price.Name = "lbl_price";
             this.lbl_price.Size = new System.Drawing.Size(50, 14);
             this.lbl_price.TabIndex = 6;
             this.lbl_price.Text = " ¥60.00";
             // 
-            // lbl_showTime
+            // lbl_filmTime
             // 
-            this.lbl_showTime.AutoSize = true;
-            this.lbl_showTime.Location = new System.Drawing.Point(222, 110);
-            this.lbl_showTime.Name = "lbl_showTime";
-            this.lbl_showTime.Size = new System.Drawing.Size(83, 14);
-            this.lbl_showTime.TabIndex = 5;
-            this.lbl_showTime.Text = "16：00-17:45";
+            this.lbl_filmTime.AutoSize = true;
+            this.lbl_filmTime.Location = new System.Drawing.Point(222, 110);
+            this.lbl_filmTime.Name = "lbl_filmTime";
+            this.lbl_filmTime.Size = new System.Drawing.Size(31, 14);
+            this.lbl_filmTime.TabIndex = 5;
+            this.lbl_filmTime.Text = "分钟";
             // 
             // lbl_filmType
             // 
@@ -393,10 +402,10 @@
             // pic_filmImg
             // 
             this.pic_filmImg.Image = ((System.Drawing.Image)(resources.GetObject("pic_filmImg.Image")));
-            this.pic_filmImg.Location = new System.Drawing.Point(18, 51);
+            this.pic_filmImg.Location = new System.Drawing.Point(27, 47);
             this.pic_filmImg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pic_filmImg.Name = "pic_filmImg";
-            this.pic_filmImg.Size = new System.Drawing.Size(116, 132);
+            this.pic_filmImg.Size = new System.Drawing.Size(100, 131);
             this.pic_filmImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_filmImg.TabIndex = 2;
             this.pic_filmImg.TabStop = false;
@@ -435,10 +444,11 @@
             this.groupBox2.Size = new System.Drawing.Size(211, 198);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "特殊票:";
+            this.groupBox2.Text = "电影票:";
             // 
             // txt_giver
             // 
+            this.txt_giver.Enabled = false;
             this.txt_giver.Location = new System.Drawing.Point(109, 98);
             this.txt_giver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_giver.Name = "txt_giver";
@@ -462,7 +472,7 @@
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 14);
             this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "赠送者：";
+            this.labelControl2.Text = "邀请码：";
             // 
             // rdo_stuTicket
             // 
@@ -475,7 +485,6 @@
             this.rdo_stuTicket.TabStop = true;
             this.rdo_stuTicket.Text = "学生票";
             this.rdo_stuTicket.UseVisualStyleBackColor = true;
-            this.rdo_stuTicket.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // rdo_freeTicket
             // 
@@ -488,10 +497,12 @@
             this.rdo_freeTicket.TabStop = true;
             this.rdo_freeTicket.Text = "赠票";
             this.rdo_freeTicket.UseVisualStyleBackColor = true;
+            this.rdo_freeTicket.CheckedChanged += new System.EventHandler(this.rdo_freeTicket_CheckedChanged);
             // 
             // rdo_comTicket
             // 
             this.rdo_comTicket.AutoSize = true;
+            this.rdo_comTicket.Checked = true;
             this.rdo_comTicket.Location = new System.Drawing.Point(29, 33);
             this.rdo_comTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdo_comTicket.Name = "rdo_comTicket";
@@ -500,6 +511,7 @@
             this.rdo_comTicket.TabStop = true;
             this.rdo_comTicket.Text = "普通票";
             this.rdo_comTicket.UseVisualStyleBackColor = true;
+            this.rdo_comTicket.CheckedChanged += new System.EventHandler(this.rdo_freeTicket_CheckedChanged);
             // 
             // labelControl1
             // 
@@ -512,7 +524,8 @@
             // 
             // tabcon_videoHall
             // 
-            this.tabcon_videoHall.Controls.Add(this.tabpage_seats);
+            this.tabcon_videoHall.Controls.Add(this.tp_videoHall1);
+            this.tabcon_videoHall.Controls.Add(this.tp_videoHall2);
             this.tabcon_videoHall.Location = new System.Drawing.Point(190, 235);
             this.tabcon_videoHall.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabcon_videoHall.Name = "tabcon_videoHall";
@@ -520,56 +533,56 @@
             this.tabcon_videoHall.Size = new System.Drawing.Size(564, 211);
             this.tabcon_videoHall.TabIndex = 4;
             // 
-            // tabpage_seats
+            // tp_videoHall1
             // 
-            this.tabpage_seats.Controls.Add(this.linkLb5_8);
-            this.tabpage_seats.Controls.Add(this.linkLb4_8);
-            this.tabpage_seats.Controls.Add(this.linkLb3_8);
-            this.tabpage_seats.Controls.Add(this.linkLb2_8);
-            this.tabpage_seats.Controls.Add(this.linkLb1_8);
-            this.tabpage_seats.Controls.Add(this.linkLb5_7);
-            this.tabpage_seats.Controls.Add(this.linkLb4_7);
-            this.tabpage_seats.Controls.Add(this.linkLb3_7);
-            this.tabpage_seats.Controls.Add(this.linkLb2_7);
-            this.tabpage_seats.Controls.Add(this.linkLb1_7);
-            this.tabpage_seats.Controls.Add(this.linkLb5_6);
-            this.tabpage_seats.Controls.Add(this.linkLb4_6);
-            this.tabpage_seats.Controls.Add(this.linkLb3_6);
-            this.tabpage_seats.Controls.Add(this.linkLb2_6);
-            this.tabpage_seats.Controls.Add(this.linkLb1_6);
-            this.tabpage_seats.Controls.Add(this.linkLb5_5);
-            this.tabpage_seats.Controls.Add(this.linkLb4_5);
-            this.tabpage_seats.Controls.Add(this.linkLb3_5);
-            this.tabpage_seats.Controls.Add(this.linkLb2_5);
-            this.tabpage_seats.Controls.Add(this.linkLb1_5);
-            this.tabpage_seats.Controls.Add(this.linkLb5_4);
-            this.tabpage_seats.Controls.Add(this.linkLb4_4);
-            this.tabpage_seats.Controls.Add(this.linkLb3_4);
-            this.tabpage_seats.Controls.Add(this.linkLb2_4);
-            this.tabpage_seats.Controls.Add(this.linkLb1_4);
-            this.tabpage_seats.Controls.Add(this.linkLb5_3);
-            this.tabpage_seats.Controls.Add(this.linkLb5_2);
-            this.tabpage_seats.Controls.Add(this.linkLb4_3);
-            this.tabpage_seats.Controls.Add(this.linkLb4_2);
-            this.tabpage_seats.Controls.Add(this.linkLb3_3);
-            this.tabpage_seats.Controls.Add(this.linkLb3_2);
-            this.tabpage_seats.Controls.Add(this.linkLb5_1);
-            this.tabpage_seats.Controls.Add(this.linkLb2_3);
-            this.tabpage_seats.Controls.Add(this.linkLb4_1);
-            this.tabpage_seats.Controls.Add(this.linkLb2_2);
-            this.tabpage_seats.Controls.Add(this.linkLb3_1);
-            this.tabpage_seats.Controls.Add(this.linkLb1_3);
-            this.tabpage_seats.Controls.Add(this.linkLb2_1);
-            this.tabpage_seats.Controls.Add(this.linkLb1_2);
-            this.tabpage_seats.Controls.Add(this.linkLb1_1);
-            this.tabpage_seats.Location = new System.Drawing.Point(4, 23);
-            this.tabpage_seats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabpage_seats.Name = "tabpage_seats";
-            this.tabpage_seats.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabpage_seats.Size = new System.Drawing.Size(556, 184);
-            this.tabpage_seats.TabIndex = 0;
-            this.tabpage_seats.Text = "放映厅";
-            this.tabpage_seats.UseVisualStyleBackColor = true;
+            this.tp_videoHall1.Controls.Add(this.linkLb5_8);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_8);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_8);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_8);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_8);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_7);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_7);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_7);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_7);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_7);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_6);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_6);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_6);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_6);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_6);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_5);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_5);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_5);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_5);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_5);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_4);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_4);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_4);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_4);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_4);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_3);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_2);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_3);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_2);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_3);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_2);
+            this.tp_videoHall1.Controls.Add(this.linkLb5_1);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_3);
+            this.tp_videoHall1.Controls.Add(this.linkLb4_1);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_2);
+            this.tp_videoHall1.Controls.Add(this.linkLb3_1);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_3);
+            this.tp_videoHall1.Controls.Add(this.linkLb2_1);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_2);
+            this.tp_videoHall1.Controls.Add(this.linkLb1_1);
+            this.tp_videoHall1.Location = new System.Drawing.Point(4, 23);
+            this.tp_videoHall1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tp_videoHall1.Name = "tp_videoHall1";
+            this.tp_videoHall1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tp_videoHall1.Size = new System.Drawing.Size(556, 184);
+            this.tp_videoHall1.TabIndex = 0;
+            this.tp_videoHall1.Text = "放映厅1";
+            this.tp_videoHall1.UseVisualStyleBackColor = true;
             // 
             // linkLb5_8
             // 
@@ -579,7 +592,6 @@
             this.linkLb5_8.TabIndex = 0;
             this.linkLb5_8.TabStop = true;
             this.linkLb5_8.Text = " 5—8";
-            this.linkLb5_8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb4_8
             // 
@@ -589,7 +601,6 @@
             this.linkLb4_8.TabIndex = 0;
             this.linkLb4_8.TabStop = true;
             this.linkLb4_8.Text = " 4—8";
-            this.linkLb4_8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb3_8
             // 
@@ -599,7 +610,6 @@
             this.linkLb3_8.TabIndex = 0;
             this.linkLb3_8.TabStop = true;
             this.linkLb3_8.Text = " 3—8";
-            this.linkLb3_8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb2_8
             // 
@@ -609,7 +619,6 @@
             this.linkLb2_8.TabIndex = 0;
             this.linkLb2_8.TabStop = true;
             this.linkLb2_8.Text = " 2—8";
-            this.linkLb2_8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb1_8
             // 
@@ -619,7 +628,6 @@
             this.linkLb1_8.TabIndex = 0;
             this.linkLb1_8.TabStop = true;
             this.linkLb1_8.Text = " 1—8";
-            this.linkLb1_8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb5_7
             // 
@@ -629,7 +637,6 @@
             this.linkLb5_7.TabIndex = 0;
             this.linkLb5_7.TabStop = true;
             this.linkLb5_7.Text = " 5—7";
-            this.linkLb5_7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb4_7
             // 
@@ -639,7 +646,6 @@
             this.linkLb4_7.TabIndex = 0;
             this.linkLb4_7.TabStop = true;
             this.linkLb4_7.Text = " 4—7";
-            this.linkLb4_7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb3_7
             // 
@@ -649,7 +655,6 @@
             this.linkLb3_7.TabIndex = 0;
             this.linkLb3_7.TabStop = true;
             this.linkLb3_7.Text = " 3—7";
-            this.linkLb3_7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb2_7
             // 
@@ -659,7 +664,6 @@
             this.linkLb2_7.TabIndex = 0;
             this.linkLb2_7.TabStop = true;
             this.linkLb2_7.Text = " 2—7";
-            this.linkLb2_7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb1_7
             // 
@@ -669,7 +673,6 @@
             this.linkLb1_7.TabIndex = 0;
             this.linkLb1_7.TabStop = true;
             this.linkLb1_7.Text = " 1—7";
-            this.linkLb1_7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // linkLb5_6
             // 
@@ -941,19 +944,450 @@
             this.linkLb1_1.TabStop = true;
             this.linkLb1_1.Text = " 1—1";
             // 
+            // tp_videoHall2
+            // 
+            this.tp_videoHall2.Controls.Add(this.linkLabel1);
+            this.tp_videoHall2.Controls.Add(this.linkLabel2);
+            this.tp_videoHall2.Controls.Add(this.linkLabel3);
+            this.tp_videoHall2.Controls.Add(this.linkLabel4);
+            this.tp_videoHall2.Controls.Add(this.linkLabel5);
+            this.tp_videoHall2.Controls.Add(this.linkLabel6);
+            this.tp_videoHall2.Controls.Add(this.linkLabel7);
+            this.tp_videoHall2.Controls.Add(this.linkLabel8);
+            this.tp_videoHall2.Controls.Add(this.linkLabel9);
+            this.tp_videoHall2.Controls.Add(this.linkLabel10);
+            this.tp_videoHall2.Controls.Add(this.linkLabel11);
+            this.tp_videoHall2.Controls.Add(this.linkLabel12);
+            this.tp_videoHall2.Controls.Add(this.linkLabel13);
+            this.tp_videoHall2.Controls.Add(this.linkLabel14);
+            this.tp_videoHall2.Controls.Add(this.linkLabel15);
+            this.tp_videoHall2.Controls.Add(this.linkLabel16);
+            this.tp_videoHall2.Controls.Add(this.linkLabel17);
+            this.tp_videoHall2.Controls.Add(this.linkLabel18);
+            this.tp_videoHall2.Controls.Add(this.linkLabel19);
+            this.tp_videoHall2.Controls.Add(this.linkLabel20);
+            this.tp_videoHall2.Controls.Add(this.linkLabel21);
+            this.tp_videoHall2.Controls.Add(this.linkLabel22);
+            this.tp_videoHall2.Controls.Add(this.linkLabel23);
+            this.tp_videoHall2.Controls.Add(this.linkLabel24);
+            this.tp_videoHall2.Controls.Add(this.linkLabel25);
+            this.tp_videoHall2.Controls.Add(this.linkLabel26);
+            this.tp_videoHall2.Controls.Add(this.linkLabel27);
+            this.tp_videoHall2.Controls.Add(this.linkLabel28);
+            this.tp_videoHall2.Controls.Add(this.linkLabel29);
+            this.tp_videoHall2.Controls.Add(this.linkLabel30);
+            this.tp_videoHall2.Controls.Add(this.linkLabel31);
+            this.tp_videoHall2.Controls.Add(this.linkLabel32);
+            this.tp_videoHall2.Controls.Add(this.linkLabel33);
+            this.tp_videoHall2.Controls.Add(this.linkLabel34);
+            this.tp_videoHall2.Controls.Add(this.linkLabel35);
+            this.tp_videoHall2.Controls.Add(this.linkLabel36);
+            this.tp_videoHall2.Controls.Add(this.linkLabel37);
+            this.tp_videoHall2.Controls.Add(this.linkLabel38);
+            this.tp_videoHall2.Controls.Add(this.linkLabel39);
+            this.tp_videoHall2.Controls.Add(this.linkLabel40);
+            this.tp_videoHall2.Location = new System.Drawing.Point(4, 23);
+            this.tp_videoHall2.Name = "tp_videoHall2";
+            this.tp_videoHall2.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_videoHall2.Size = new System.Drawing.Size(556, 184);
+            this.tp_videoHall2.TabIndex = 1;
+            this.tp_videoHall2.Text = "放映厅2";
+            this.tp_videoHall2.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Location = new System.Drawing.Point(462, 149);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel1.TabIndex = 1;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = " 5—8";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.Location = new System.Drawing.Point(462, 117);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel2.TabIndex = 22;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = " 4—8";
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.Location = new System.Drawing.Point(462, 81);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel3.TabIndex = 23;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = " 3—8";
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.Location = new System.Drawing.Point(462, 47);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel4.TabIndex = 24;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = " 2—8";
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.Location = new System.Drawing.Point(462, 13);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel5.TabIndex = 25;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = " 1—8";
+            // 
+            // linkLabel6
+            // 
+            this.linkLabel6.Location = new System.Drawing.Point(403, 149);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel6.TabIndex = 26;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = " 5—7";
+            // 
+            // linkLabel7
+            // 
+            this.linkLabel7.Location = new System.Drawing.Point(403, 117);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel7.TabIndex = 27;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = " 4—7";
+            // 
+            // linkLabel8
+            // 
+            this.linkLabel8.Location = new System.Drawing.Point(403, 81);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel8.TabIndex = 28;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = " 3—7";
+            // 
+            // linkLabel9
+            // 
+            this.linkLabel9.Location = new System.Drawing.Point(403, 47);
+            this.linkLabel9.Name = "linkLabel9";
+            this.linkLabel9.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel9.TabIndex = 29;
+            this.linkLabel9.TabStop = true;
+            this.linkLabel9.Text = " 2—7";
+            // 
+            // linkLabel10
+            // 
+            this.linkLabel10.Location = new System.Drawing.Point(403, 13);
+            this.linkLabel10.Name = "linkLabel10";
+            this.linkLabel10.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel10.TabIndex = 30;
+            this.linkLabel10.TabStop = true;
+            this.linkLabel10.Text = " 1—7";
+            // 
+            // linkLabel11
+            // 
+            this.linkLabel11.Location = new System.Drawing.Point(344, 149);
+            this.linkLabel11.Name = "linkLabel11";
+            this.linkLabel11.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel11.TabIndex = 31;
+            this.linkLabel11.TabStop = true;
+            this.linkLabel11.Text = " 5—6";
+            // 
+            // linkLabel12
+            // 
+            this.linkLabel12.Location = new System.Drawing.Point(344, 117);
+            this.linkLabel12.Name = "linkLabel12";
+            this.linkLabel12.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel12.TabIndex = 32;
+            this.linkLabel12.TabStop = true;
+            this.linkLabel12.Text = " 4—6";
+            // 
+            // linkLabel13
+            // 
+            this.linkLabel13.Location = new System.Drawing.Point(344, 81);
+            this.linkLabel13.Name = "linkLabel13";
+            this.linkLabel13.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel13.TabIndex = 33;
+            this.linkLabel13.TabStop = true;
+            this.linkLabel13.Text = " 3—6";
+            // 
+            // linkLabel14
+            // 
+            this.linkLabel14.Location = new System.Drawing.Point(344, 47);
+            this.linkLabel14.Name = "linkLabel14";
+            this.linkLabel14.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel14.TabIndex = 34;
+            this.linkLabel14.TabStop = true;
+            this.linkLabel14.Text = " 2—6";
+            // 
+            // linkLabel15
+            // 
+            this.linkLabel15.Location = new System.Drawing.Point(344, 13);
+            this.linkLabel15.Name = "linkLabel15";
+            this.linkLabel15.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel15.TabIndex = 35;
+            this.linkLabel15.TabStop = true;
+            this.linkLabel15.Text = " 1—6";
+            // 
+            // linkLabel16
+            // 
+            this.linkLabel16.Location = new System.Drawing.Point(284, 149);
+            this.linkLabel16.Name = "linkLabel16";
+            this.linkLabel16.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel16.TabIndex = 36;
+            this.linkLabel16.TabStop = true;
+            this.linkLabel16.Text = " 5—5";
+            // 
+            // linkLabel17
+            // 
+            this.linkLabel17.Location = new System.Drawing.Point(284, 117);
+            this.linkLabel17.Name = "linkLabel17";
+            this.linkLabel17.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel17.TabIndex = 37;
+            this.linkLabel17.TabStop = true;
+            this.linkLabel17.Text = " 4—5";
+            // 
+            // linkLabel18
+            // 
+            this.linkLabel18.Location = new System.Drawing.Point(284, 81);
+            this.linkLabel18.Name = "linkLabel18";
+            this.linkLabel18.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel18.TabIndex = 38;
+            this.linkLabel18.TabStop = true;
+            this.linkLabel18.Text = " 3—5";
+            // 
+            // linkLabel19
+            // 
+            this.linkLabel19.Location = new System.Drawing.Point(284, 47);
+            this.linkLabel19.Name = "linkLabel19";
+            this.linkLabel19.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel19.TabIndex = 21;
+            this.linkLabel19.TabStop = true;
+            this.linkLabel19.Text = " 2—5";
+            // 
+            // linkLabel20
+            // 
+            this.linkLabel20.Location = new System.Drawing.Point(284, 13);
+            this.linkLabel20.Name = "linkLabel20";
+            this.linkLabel20.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel20.TabIndex = 20;
+            this.linkLabel20.TabStop = true;
+            this.linkLabel20.Text = " 1—5";
+            // 
+            // linkLabel21
+            // 
+            this.linkLabel21.Location = new System.Drawing.Point(218, 149);
+            this.linkLabel21.Name = "linkLabel21";
+            this.linkLabel21.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel21.TabIndex = 19;
+            this.linkLabel21.TabStop = true;
+            this.linkLabel21.Text = " 5—4";
+            // 
+            // linkLabel22
+            // 
+            this.linkLabel22.Location = new System.Drawing.Point(218, 117);
+            this.linkLabel22.Name = "linkLabel22";
+            this.linkLabel22.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel22.TabIndex = 9;
+            this.linkLabel22.TabStop = true;
+            this.linkLabel22.Text = " 4—4";
+            // 
+            // linkLabel23
+            // 
+            this.linkLabel23.Location = new System.Drawing.Point(218, 81);
+            this.linkLabel23.Name = "linkLabel23";
+            this.linkLabel23.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel23.TabIndex = 2;
+            this.linkLabel23.TabStop = true;
+            this.linkLabel23.Text = " 3—4";
+            // 
+            // linkLabel24
+            // 
+            this.linkLabel24.Location = new System.Drawing.Point(218, 47);
+            this.linkLabel24.Name = "linkLabel24";
+            this.linkLabel24.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel24.TabIndex = 3;
+            this.linkLabel24.TabStop = true;
+            this.linkLabel24.Text = " 2—4";
+            // 
+            // linkLabel25
+            // 
+            this.linkLabel25.Location = new System.Drawing.Point(218, 13);
+            this.linkLabel25.Name = "linkLabel25";
+            this.linkLabel25.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel25.TabIndex = 4;
+            this.linkLabel25.TabStop = true;
+            this.linkLabel25.Text = " 1—4";
+            // 
+            // linkLabel26
+            // 
+            this.linkLabel26.Location = new System.Drawing.Point(159, 149);
+            this.linkLabel26.Name = "linkLabel26";
+            this.linkLabel26.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel26.TabIndex = 5;
+            this.linkLabel26.TabStop = true;
+            this.linkLabel26.Text = " 5—3";
+            // 
+            // linkLabel27
+            // 
+            this.linkLabel27.Location = new System.Drawing.Point(99, 149);
+            this.linkLabel27.Name = "linkLabel27";
+            this.linkLabel27.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel27.TabIndex = 6;
+            this.linkLabel27.TabStop = true;
+            this.linkLabel27.Text = " 5—2";
+            // 
+            // linkLabel28
+            // 
+            this.linkLabel28.Location = new System.Drawing.Point(159, 117);
+            this.linkLabel28.Name = "linkLabel28";
+            this.linkLabel28.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel28.TabIndex = 7;
+            this.linkLabel28.TabStop = true;
+            this.linkLabel28.Text = " 4—3";
+            // 
+            // linkLabel29
+            // 
+            this.linkLabel29.Location = new System.Drawing.Point(99, 117);
+            this.linkLabel29.Name = "linkLabel29";
+            this.linkLabel29.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel29.TabIndex = 8;
+            this.linkLabel29.TabStop = true;
+            this.linkLabel29.Text = " 4—2";
+            // 
+            // linkLabel30
+            // 
+            this.linkLabel30.Location = new System.Drawing.Point(159, 81);
+            this.linkLabel30.Name = "linkLabel30";
+            this.linkLabel30.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel30.TabIndex = 10;
+            this.linkLabel30.TabStop = true;
+            this.linkLabel30.Text = " 3—3";
+            // 
+            // linkLabel31
+            // 
+            this.linkLabel31.Location = new System.Drawing.Point(99, 81);
+            this.linkLabel31.Name = "linkLabel31";
+            this.linkLabel31.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel31.TabIndex = 18;
+            this.linkLabel31.TabStop = true;
+            this.linkLabel31.Text = " 3—2";
+            // 
+            // linkLabel32
+            // 
+            this.linkLabel32.Location = new System.Drawing.Point(40, 149);
+            this.linkLabel32.Name = "linkLabel32";
+            this.linkLabel32.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel32.TabIndex = 11;
+            this.linkLabel32.TabStop = true;
+            this.linkLabel32.Text = " 5—1";
+            // 
+            // linkLabel33
+            // 
+            this.linkLabel33.Location = new System.Drawing.Point(159, 47);
+            this.linkLabel33.Name = "linkLabel33";
+            this.linkLabel33.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel33.TabIndex = 12;
+            this.linkLabel33.TabStop = true;
+            this.linkLabel33.Text = " 2—3";
+            // 
+            // linkLabel34
+            // 
+            this.linkLabel34.Location = new System.Drawing.Point(40, 117);
+            this.linkLabel34.Name = "linkLabel34";
+            this.linkLabel34.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel34.TabIndex = 13;
+            this.linkLabel34.TabStop = true;
+            this.linkLabel34.Text = " 4—1";
+            // 
+            // linkLabel35
+            // 
+            this.linkLabel35.Location = new System.Drawing.Point(99, 47);
+            this.linkLabel35.Name = "linkLabel35";
+            this.linkLabel35.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel35.TabIndex = 14;
+            this.linkLabel35.TabStop = true;
+            this.linkLabel35.Text = " 2—2";
+            // 
+            // linkLabel36
+            // 
+            this.linkLabel36.Location = new System.Drawing.Point(40, 81);
+            this.linkLabel36.Name = "linkLabel36";
+            this.linkLabel36.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel36.TabIndex = 15;
+            this.linkLabel36.TabStop = true;
+            this.linkLabel36.Text = " 3—1";
+            // 
+            // linkLabel37
+            // 
+            this.linkLabel37.Location = new System.Drawing.Point(159, 13);
+            this.linkLabel37.Name = "linkLabel37";
+            this.linkLabel37.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel37.TabIndex = 16;
+            this.linkLabel37.TabStop = true;
+            this.linkLabel37.Text = " 1—3";
+            // 
+            // linkLabel38
+            // 
+            this.linkLabel38.Location = new System.Drawing.Point(40, 47);
+            this.linkLabel38.Name = "linkLabel38";
+            this.linkLabel38.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel38.TabIndex = 17;
+            this.linkLabel38.TabStop = true;
+            this.linkLabel38.Text = " 2—1";
+            // 
+            // linkLabel39
+            // 
+            this.linkLabel39.Location = new System.Drawing.Point(99, 13);
+            this.linkLabel39.Name = "linkLabel39";
+            this.linkLabel39.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel39.TabIndex = 39;
+            this.linkLabel39.TabStop = true;
+            this.linkLabel39.Text = " 1—2";
+            // 
+            // linkLabel40
+            // 
+            this.linkLabel40.Location = new System.Drawing.Point(40, 13);
+            this.linkLabel40.Name = "linkLabel40";
+            this.linkLabel40.Size = new System.Drawing.Size(54, 23);
+            this.linkLabel40.TabIndex = 40;
+            this.linkLabel40.TabStop = true;
+            this.linkLabel40.Text = " 1—1";
+            // 
             // btn_confirm
             // 
-            this.btn_confirm.Location = new System.Drawing.Point(609, 457);
+            this.btn_confirm.Location = new System.Drawing.Point(572, 457);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(75, 23);
             this.btn_confirm.TabIndex = 6;
             this.btn_confirm.Text = "确定";
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
+            // 
+            // btnGiver
+            // 
+            this.btnGiver.Location = new System.Drawing.Point(675, 457);
+            this.btnGiver.Name = "btnGiver";
+            this.btnGiver.Size = new System.Drawing.Size(75, 23);
+            this.btnGiver.TabIndex = 7;
+            this.btnGiver.Text = "使用邀请码";
+            this.btnGiver.Visible = false;
+            this.btnGiver.Click += new System.EventHandler(this.btnGiver_Click);
+            // 
+            // imgLIst_FilmPic
+            // 
+            this.imgLIst_FilmPic.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst_FilmPic.ImageStream")));
+            this.imgLIst_FilmPic.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgLIst_FilmPic.Images.SetKeyName(0, "钢铁侠.jpg");
+            this.imgLIst_FilmPic.Images.SetKeyName(1, "蜘蛛侠3.jpg");
+            this.imgLIst_FilmPic.Images.SetKeyName(2, "功夫熊猫.jpg");
+            this.imgLIst_FilmPic.Images.SetKeyName(3, "火星救援.jpg");
             // 
             // SellTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 490);
+            this.Controls.Add(this.btnGiver);
             this.Controls.Add(this.btn_confirm);
             this.Controls.Add(this.tabcon_videoHall);
             this.Controls.Add(this.groupBox2);
@@ -965,6 +1399,7 @@
             this.MaximizeBox = false;
             this.Name = "SellTicket";
             this.Text = "影院售票系统";
+            this.Load += new System.EventHandler(this.SellTicket_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabpage_films.ResumeLayout(false);
@@ -977,7 +1412,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_giver.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbo_discount.Properties)).EndInit();
             this.tabcon_videoHall.ResumeLayout(false);
-            this.tabpage_seats.ResumeLayout(false);
+            this.tp_videoHall1.ResumeLayout(false);
+            this.tp_videoHall2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -990,11 +1426,10 @@
         private System.Windows.Forms.ToolStripMenuItem menu_system;
         private System.Windows.Forms.TabPage tabpage_films;
         private System.Windows.Forms.TabControl tabcon_showList;
-        private System.Windows.Forms.TreeView trv1_movieList;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbl_bestPrice;
         private System.Windows.Forms.Label lbl_price;
-        private System.Windows.Forms.Label lbl_showTime;
+        private System.Windows.Forms.Label lbl_filmTime;
         private System.Windows.Forms.Label lbl_filmType;
         private System.Windows.Forms.Label lbl_protagonist;
         private System.Windows.Forms.PictureBox pic_filmImg;
@@ -1006,7 +1441,7 @@
         private System.Windows.Forms.RadioButton rdo_comTicket;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.TabControl tabcon_videoHall;
-        private System.Windows.Forms.TabPage tabpage_seats;
+        private System.Windows.Forms.TabPage tp_videoHall1;
         private DevExpress.XtraEditors.TextEdit txt_giver;
         private DevExpress.XtraEditors.ComboBoxEdit cbo_discount;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -1062,6 +1497,51 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem menu_login;
+        private System.Windows.Forms.ComboBox cboReleaseDate;
+        private System.Windows.Forms.TreeView trv1_movieList;
+        private DevExpress.XtraEditors.SimpleButton btnGiver;
+        private System.Windows.Forms.TabPage tp_videoHall2;
+        private System.Windows.Forms.ImageList imgLIst_FilmPic;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.LinkLabel linkLabel5;
+        private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.LinkLabel linkLabel9;
+        private System.Windows.Forms.LinkLabel linkLabel10;
+        private System.Windows.Forms.LinkLabel linkLabel11;
+        private System.Windows.Forms.LinkLabel linkLabel12;
+        private System.Windows.Forms.LinkLabel linkLabel13;
+        private System.Windows.Forms.LinkLabel linkLabel14;
+        private System.Windows.Forms.LinkLabel linkLabel15;
+        private System.Windows.Forms.LinkLabel linkLabel16;
+        private System.Windows.Forms.LinkLabel linkLabel17;
+        private System.Windows.Forms.LinkLabel linkLabel18;
+        private System.Windows.Forms.LinkLabel linkLabel19;
+        private System.Windows.Forms.LinkLabel linkLabel20;
+        private System.Windows.Forms.LinkLabel linkLabel21;
+        private System.Windows.Forms.LinkLabel linkLabel22;
+        private System.Windows.Forms.LinkLabel linkLabel23;
+        private System.Windows.Forms.LinkLabel linkLabel24;
+        private System.Windows.Forms.LinkLabel linkLabel25;
+        private System.Windows.Forms.LinkLabel linkLabel26;
+        private System.Windows.Forms.LinkLabel linkLabel27;
+        private System.Windows.Forms.LinkLabel linkLabel28;
+        private System.Windows.Forms.LinkLabel linkLabel29;
+        private System.Windows.Forms.LinkLabel linkLabel30;
+        private System.Windows.Forms.LinkLabel linkLabel31;
+        private System.Windows.Forms.LinkLabel linkLabel32;
+        private System.Windows.Forms.LinkLabel linkLabel33;
+        private System.Windows.Forms.LinkLabel linkLabel34;
+        private System.Windows.Forms.LinkLabel linkLabel35;
+        private System.Windows.Forms.LinkLabel linkLabel36;
+        private System.Windows.Forms.LinkLabel linkLabel37;
+        private System.Windows.Forms.LinkLabel linkLabel38;
+        private System.Windows.Forms.LinkLabel linkLabel39;
+        private System.Windows.Forms.LinkLabel linkLabel40;
 
     }
 }

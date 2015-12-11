@@ -16,3 +16,14 @@ E:\学习\大三\C#实验\Cinema\CinemaBLL\obj\Debug\CinemaBLL.dll
 E:\学习\大三\C#实验\Cinema\CinemaBLL\obj\Debug\CinemaBLL.pdb
 E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaCommon.dll
 E:\学习\大三\C#实验\Cinema\CinemaBLL\bin\Debug\CinemaCommon.pdb
+E:\Cinema\CinemaBLL\bin\Debug\CinemaBLL.dll
+E:\Cinema\CinemaBLL\bin\Debug\CinemaBLL.pdb
+E:\Cinema\CinemaBLL\bin\Debug\CinemaCommon.dll
+E:\Cinema\CinemaBLL\bin\Debug\CinemaDAL.dll
+E:\Cinema\CinemaBLL\bin\Debug\CinemaSQL.dll
+E:\Cinema\CinemaBLL\bin\Debug\CinemaCommon.pdb
+E:\Cinema\CinemaBLL\bin\Debug\CinemaDAL.pdb
+E:\Cinema\CinemaBLL\bin\Debug\CinemaSQL.pdb
+E:\Cinema\CinemaBLL\obj\Debug\CinemaBLL.csprojResolveAssemblyReference.cache
+E:\Cinema\CinemaBLL\obj\Debug\CinemaBLL.dll
+E:\Cinema\CinemaBLL\obj\Debug\CinemaBLL.pdb

@@ -100,5 +100,25 @@ namespace CinemaCommon
             set { filmState = value; }
         }
 
+        private int scheduleTime;
+        /// <summary>
+        /// 排片次数
+        /// </summary>
+        public int ScheduleTime
+        {
+            get { return scheduleTime; }
+            set { scheduleTime = value; }
+        }
+
+        private string deadline;
+        /// <summary>
+        /// 放映截止时间
+        /// </summary>
+        public string Deadline
+        {
+            get { return deadline; }
+            set { deadline = value; }
+        }
+
     }
 }

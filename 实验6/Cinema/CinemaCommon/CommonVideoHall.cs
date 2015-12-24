@@ -11,11 +11,11 @@ namespace CinemaCommon
         public CommonVideoHall() { }
         public CommonVideoHall(int id, string strId)
         {
-            this.Id = id;
+            this.VideoHallId = id;
             this.strId = strId;
         }
 
-        public int Id { get; set; }
+        public int VideoHallId { get; set; }
 
         private string strId;
         public string StrId
@@ -23,13 +23,16 @@ namespace CinemaCommon
             set { strId = value; }
             get
             {
-                if (this.Id == 0)
+                if (this.VideoHallId == 0)
                 {
                     return strId;
                 }
-                return Id.ToString();
+                return VideoHallId.ToString();
             }
-
         }
+        public int Seatings { get; set; }
+        public int RowSeatNum { get; set; }
+        public int ColumnSeatNum { get; set; }
+
     }
 }

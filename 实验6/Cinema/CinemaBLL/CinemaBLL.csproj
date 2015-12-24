@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="FileOperationBLLL.cs" />
     <Compile Include="FilmMsgBLL.cs" />
+    <Compile Include="FilmToExcelBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FilmScheduleBLL.cs" />

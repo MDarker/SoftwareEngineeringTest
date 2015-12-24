@@ -8,9 +8,9 @@ using System.Data.SqlClient;
 
 namespace CinemaSQLHelper
 {
-    public class Dao
+    public class SQLHelper
     {
-        private static string conStr = "Data Source=DESKTOP-BK9I1VO;Initial Catalog=影院售票系统;Persist Security Info=True;User ID=sa;Password=123456";
+        private static string conStr = "Data Source=localhost;Initial Catalog=影院售票系统;Integrated Security=True";
 
         #region Prepare准备,进行通道连接,命令赋值
         /// <summary>
@@ -106,7 +106,7 @@ namespace CinemaSQLHelper
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        public static DataTable GetDataSet(string sql)
+        public static DataTable GetDataTable(string sql)
         {
             DataSet ds = new DataSet();
             using (SqlConnection conn = new SqlConnection(conStr))

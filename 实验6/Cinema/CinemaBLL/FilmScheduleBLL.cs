@@ -41,6 +41,13 @@ namespace CinemaBLL
         /// <returns></returns>
         public DataTable GetScheduledFilm()
         {
+            DateTime nowDate = DateTime.Now;
+            string strDate = nowDate.ToString();
+            strDate = DateFormat.GetRightDateFormat(strDate);
+            //删除下映电影的排片
+            filmSchedule.DeleteOverdueFilmId(strDate);
+            //删除放映日期不是今天以及之后的排片（过期）的排片
+            filmSchedule.DeleteOverdueScheduleId(strDate);
             return filmSchedule.GetScheduledFilm();
         }
 
@@ -75,9 +82,9 @@ namespace CinemaBLL
         /// </summary>
         /// <param name="filmId"></param>
         /// <returns></returns>
-        public bool DeletScheduledFilm(int scheduleId)
+        public bool DeleteScheduledFilm(int scheduleId)
         {
-            if (filmSchedule.DeletScheduledFilm(scheduleId) > 0)
+            if (filmSchedule.DeleteScheduledFilm(scheduleId) > 0)
             {
                 return true;
             }
@@ -90,14 +97,14 @@ namespace CinemaBLL
         /// <param name="cfilmSchedule"></param>
         /// <param name="op"></param>
         /// <returns></returns>
-        public bool IsScheduleTimeRepeat(CommonFilmSchedule cfilmSchedule)
+        public bool IsScheduleTimeRepeat(int scheduleId, CommonFilmSchedule cfilmSchedule)
         {
-            int obj = (int)filmSchedule.IsScheduleTimeRepeat(cfilmSchedule.VideoHallId, cfilmSchedule.FilmBeginId, cfilmSchedule.FilmEndId);
+            int obj = (int)filmSchedule.IsScheduleTimeRepeat(scheduleId, cfilmSchedule.VideoHallId,
+                cfilmSchedule.ReleaseDates, cfilmSchedule.FilmBeginId, cfilmSchedule.FilmEndId);
             if (obj > 0)
             {
                 return true;
             }
-
             return false;
         }
     }

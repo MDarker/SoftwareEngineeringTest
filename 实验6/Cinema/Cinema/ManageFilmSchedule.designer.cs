@@ -50,6 +50,14 @@
             this.rdo_unshelve = new System.Windows.Forms.RadioButton();
             this.lbl_filmId = new System.Windows.Forms.Label();
             this.lbl_scheduleId = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtp_ReleaseDates = new System.Windows.Forms.DateTimePicker();
+            this.txt_ticketPrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_preferentialPrice = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.grp_schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_filmSchedule)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +80,7 @@
             this.btn_NoSchedule.Name = "btn_NoSchedule";
             this.btn_NoSchedule.Size = new System.Drawing.Size(75, 23);
             this.btn_NoSchedule.TabIndex = 3;
-            this.btn_NoSchedule.Text = "还没排的";
+            this.btn_NoSchedule.Text = "待排";
             this.btn_NoSchedule.UseVisualStyleBackColor = true;
             this.btn_NoSchedule.Click += new System.EventHandler(this.btn_NoSchedule_Click);
             // 
@@ -82,7 +90,7 @@
             this.btn_Scheduled.Name = "btn_Scheduled";
             this.btn_Scheduled.Size = new System.Drawing.Size(75, 23);
             this.btn_Scheduled.TabIndex = 2;
-            this.btn_Scheduled.Text = "已经排的";
+            this.btn_Scheduled.Text = "已排";
             this.btn_Scheduled.UseVisualStyleBackColor = true;
             this.btn_Scheduled.Click += new System.EventHandler(this.btn_Scheduled_Click);
             // 
@@ -117,6 +125,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_filmSchedule.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_filmSchedule.RowHeadersWidth = 20;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv_filmSchedule.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_filmSchedule.RowTemplate.Height = 23;
@@ -137,7 +146,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 307);
+            this.label2.Location = new System.Drawing.Point(35, 306);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 4;
@@ -146,11 +155,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(297, 312);
+            this.label3.Location = new System.Drawing.Point(297, 311);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 5;
-            this.label3.Text = "影片截至时间：";
+            this.label3.Text = "影片结束时间：";
             // 
             // label6
             // 
@@ -180,7 +189,7 @@
             // 
             // txt_filmEndTime
             // 
-            this.txt_filmEndTime.Location = new System.Drawing.Point(392, 309);
+            this.txt_filmEndTime.Location = new System.Drawing.Point(392, 306);
             this.txt_filmEndTime.Name = "txt_filmEndTime";
             this.txt_filmEndTime.ReadOnly = true;
             this.txt_filmEndTime.Size = new System.Drawing.Size(100, 21);
@@ -190,7 +199,7 @@
             // 
             this.cbo_filmBeginTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_filmBeginTime.FormattingEnabled = true;
-            this.cbo_filmBeginTime.Location = new System.Drawing.Point(130, 304);
+            this.cbo_filmBeginTime.Location = new System.Drawing.Point(130, 303);
             this.cbo_filmBeginTime.Name = "cbo_filmBeginTime";
             this.cbo_filmBeginTime.Size = new System.Drawing.Size(100, 20);
             this.cbo_filmBeginTime.TabIndex = 2;
@@ -198,7 +207,7 @@
             // 
             // btn_confirm
             // 
-            this.btn_confirm.Location = new System.Drawing.Point(306, 356);
+            this.btn_confirm.Location = new System.Drawing.Point(113, 416);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(75, 23);
             this.btn_confirm.TabIndex = 3;
@@ -208,7 +217,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(417, 356);
+            this.btn_cancel.Location = new System.Drawing.Point(319, 416);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 4;
@@ -220,7 +229,7 @@
             // 
             this.rdo_onshelve.AutoSize = true;
             this.rdo_onshelve.Checked = true;
-            this.rdo_onshelve.Location = new System.Drawing.Point(86, 356);
+            this.rdo_onshelve.Location = new System.Drawing.Point(183, 382);
             this.rdo_onshelve.Name = "rdo_onshelve";
             this.rdo_onshelve.Size = new System.Drawing.Size(47, 16);
             this.rdo_onshelve.TabIndex = 15;
@@ -231,7 +240,7 @@
             // rdo_unshelve
             // 
             this.rdo_unshelve.AutoSize = true;
-            this.rdo_unshelve.Location = new System.Drawing.Point(159, 356);
+            this.rdo_unshelve.Location = new System.Drawing.Point(314, 382);
             this.rdo_unshelve.Name = "rdo_unshelve";
             this.rdo_unshelve.Size = new System.Drawing.Size(47, 16);
             this.rdo_unshelve.TabIndex = 16;
@@ -246,21 +255,101 @@
             this.lbl_filmId.Size = new System.Drawing.Size(83, 12);
             this.lbl_filmId.TabIndex = 17;
             this.lbl_filmId.Text = "影片Id-不可见";
+            this.lbl_filmId.Visible = false;
             // 
             // lbl_scheduleId
             // 
             this.lbl_scheduleId.AutoSize = true;
-            this.lbl_scheduleId.Location = new System.Drawing.Point(238, 341);
+            this.lbl_scheduleId.Location = new System.Drawing.Point(238, 287);
             this.lbl_scheduleId.Name = "lbl_scheduleId";
             this.lbl_scheduleId.Size = new System.Drawing.Size(83, 12);
             this.lbl_scheduleId.TabIndex = 18;
             this.lbl_scheduleId.Text = "排片id-不可见";
+            this.lbl_scheduleId.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(58, 345);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "放映日期：";
+            // 
+            // dtp_ReleaseDates
+            // 
+            this.dtp_ReleaseDates.Location = new System.Drawing.Point(128, 340);
+            this.dtp_ReleaseDates.Name = "dtp_ReleaseDates";
+            this.dtp_ReleaseDates.Size = new System.Drawing.Size(102, 21);
+            this.dtp_ReleaseDates.TabIndex = 21;
+            // 
+            // txt_ticketPrice
+            // 
+            this.txt_ticketPrice.Location = new System.Drawing.Point(340, 341);
+            this.txt_ticketPrice.Name = "txt_ticketPrice";
+            this.txt_ticketPrice.Size = new System.Drawing.Size(61, 21);
+            this.txt_ticketPrice.TabIndex = 22;
+            this.txt_ticketPrice.Text = "90";
+            this.txt_ticketPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(297, 346);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "单价：";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(344, 346);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 12);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "¥:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(411, 346);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "优惠价：";
+            // 
+            // txt_preferentialPrice
+            // 
+            this.txt_preferentialPrice.Location = new System.Drawing.Point(459, 340);
+            this.txt_preferentialPrice.Name = "txt_preferentialPrice";
+            this.txt_preferentialPrice.Size = new System.Drawing.Size(61, 21);
+            this.txt_preferentialPrice.TabIndex = 26;
+            this.txt_preferentialPrice.Text = "70";
+            this.txt_preferentialPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(461, 345);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 12);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "¥:";
             // 
             // ManageFilmSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 389);
+            this.ClientSize = new System.Drawing.Size(536, 451);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txt_preferentialPrice);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txt_ticketPrice);
+            this.Controls.Add(this.dtp_ReleaseDates);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_scheduleId);
             this.Controls.Add(this.lbl_filmId);
             this.Controls.Add(this.rdo_unshelve);
@@ -276,6 +365,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grp_schedule);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ManageFilmSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -309,5 +399,13 @@
         private System.Windows.Forms.RadioButton rdo_unshelve;
         private System.Windows.Forms.Label lbl_filmId;
         private System.Windows.Forms.Label lbl_scheduleId;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtp_ReleaseDates;
+        private System.Windows.Forms.TextBox txt_ticketPrice;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_preferentialPrice;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CinemaBLL;
 using CinemaCommon;
@@ -17,16 +12,14 @@ namespace Cinema
     /// </summary>
     public partial class ManageFilmSchedule : Form
     {
-        private SellTicket sellTicket;
-
         FilmMsgBLL filmMsg = new FilmMsgBLL();
         VideoHallBLL videoHall = new VideoHallBLL();
         FilmScheduleBLL filmSchedule = new FilmScheduleBLL();
-
-        public ManageFilmSchedule(SellTicket sellTicket)
+        Main m;
+        public ManageFilmSchedule(Main m)
         {
             InitializeComponent();
-            this.sellTicket = sellTicket;
+            this.m = m;
         }
 
         /// <summary>
@@ -41,15 +34,15 @@ namespace Cinema
             InitVideoHallNO();
             InitFilmBeginTime();
 
-            grp_schedule.Text = "还没排的影片：";
+            grp_schedule.Text = "待排的影片：";
             rdo_unshelve.Enabled = false;
             //还没排的
-            if (grp_schedule.Text.Contains("还没排"))
+            if (grp_schedule.Text.Contains("待排"))
             {
                 btn_confirm.Text = "上架";
             }
             //已经排的
-            if (grp_schedule.Text.Contains("已经排"))
+            if (grp_schedule.Text.Contains("已排"))
             {
                 btn_confirm.Text = "更改";
             }
@@ -66,7 +59,7 @@ namespace Cinema
             //DataTable dt = (DataTable)dgv_filmSchedule.DataSource;
             //dt.Rows.Clear();
             //dgv_filmSchedule.DataSource = dt;
-            grp_schedule.Text = "还没排的影片：";
+            grp_schedule.Text = "待排的影片：";
             btn_confirm.Text = "上架";
             rdo_onshelve.Checked = true;
             rdo_unshelve.Enabled = false;
@@ -86,7 +79,7 @@ namespace Cinema
         /// <param name="e"></param>
         private void btn_Scheduled_Click(object sender, EventArgs e)
         {
-            grp_schedule.Text = "已经排的影片：";
+            grp_schedule.Text = "已排的影片：";
             btn_confirm.Text = "更改";
             rdo_unshelve.Enabled = true;
             txt_filmName.Text = "";
@@ -110,19 +103,19 @@ namespace Cinema
             try
             {
                 filmId = Convert.ToInt32(lbl_filmId.Text);//电影Id
-                if (grp_schedule.Text.Contains("已经排的"))
+                if (grp_schedule.Text.Contains("已排"))
                 {
                     scheduleId = Convert.ToInt32(lbl_scheduleId.Text);//排片Id
                 }
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 MessageBox.Show("请选择影片!");
                 return;
             }
             CommonFilmSchedule cfilmSchedule = new CommonFilmSchedule();
             //将控件数据存入CommonFilmSchedule类
-            if(!ControlsToCommon(filmId, cfilmSchedule))
+            if (!ControlsToCommon(filmId, cfilmSchedule))
             {
                 return;
             }
@@ -133,17 +126,17 @@ namespace Cinema
                 Unshelve(filmId, scheduleId);
             }
             //检查排片是否重复
-            if (filmSchedule.IsScheduleTimeRepeat(cfilmSchedule))
+            if (filmSchedule.IsScheduleTimeRepeat(scheduleId, cfilmSchedule))
             {
                 MessageBox.Show("不要重复排片");
                 return;
             }
             //保存信息
-            if (grp_schedule.Text.Contains("还没排的"))
+            if (grp_schedule.Text.Contains("待排"))
             {
                 AddFilmSchedule(filmId, cfilmSchedule);
             }
-            if (grp_schedule.Text.Contains("已经排的"))
+            if (grp_schedule.Text.Contains("已排"))
             {
                 ModifyScheduledFilm(scheduleId, cfilmSchedule);
             }
@@ -162,7 +155,7 @@ namespace Cinema
                 MessageBox.Show("请选择放映厅");
                 return false;
             }
-            cfilmSchedule.VideoHallId = (int)cbo_videoHallNO.SelectedValue;
+            cfilmSchedule.VideoHallId = Convert.ToInt32(cbo_videoHallNO.SelectedValue);
             CommonSchedule schedule = (CommonSchedule)cbo_filmBeginTime.SelectedItem;
             if (schedule.Time.Contains("请选择"))
             {
@@ -173,6 +166,11 @@ namespace Cinema
             cfilmSchedule.FilmEndTime = txt_filmEndTime.Text;
             cfilmSchedule.FilmBeginId = schedule.Id;
             cfilmSchedule.FilmEndId = schedule.Id + 5;
+            cfilmSchedule.TicketPrice = Convert.ToInt32(txt_ticketPrice.Text.Trim());
+            cfilmSchedule.PreferentialPrice = Convert.ToInt32(txt_preferentialPrice.Text.Trim());
+            //转换为yyyy/mm/dd
+            string releaseDates = Convert.ToString(dtp_ReleaseDates.Value.Date);
+            cfilmSchedule.ReleaseDates = releaseDates.Substring(0, releaseDates.LastIndexOf('/'));
             return true;
         }
 
@@ -206,7 +204,6 @@ namespace Cinema
             {
                 //刷新dgv控件
                 GetScheduledFilm();
-                MessageBox.Show("修改完成");
             }
         }
 
@@ -223,7 +220,7 @@ namespace Cinema
                 return;
             }
             //删除排片表中的信息
-            bool rDel = filmSchedule.DeletScheduledFilm(scheduleId);
+            bool rDel = filmSchedule.DeleteScheduledFilm(scheduleId);
             //记录排片次数
             bool rTime = filmMsg.SubScheduleTime(filmId);
             if (rDel && rTime)
@@ -283,23 +280,31 @@ namespace Cinema
                 dgv_filmSchedule.Columns["videoHallId"].HeaderText = "放映厅Id";
                 dgv_filmSchedule.Columns["filmBeginTime"].HeaderText = "放映开始时间";
                 dgv_filmSchedule.Columns["filmEndTime"].HeaderText = "放映结束时间";
+                dgv_filmSchedule.Columns["releaseDates"].HeaderText = "放映日期";
+
                 dgv_filmSchedule.Columns["filmId"].DataPropertyName = "FilmId";
                 dgv_filmSchedule.Columns["filmName"].DataPropertyName = "FilmName";
                 dgv_filmSchedule.Columns["videoHallId"].DataPropertyName = "VideoHallId";
                 dgv_filmSchedule.Columns["filmBeginTime"].DataPropertyName = "FilmBeginTime";
                 dgv_filmSchedule.Columns["filmEndTime"].DataPropertyName = "FilmEndTime";
+                dgv_filmSchedule.Columns["releaseDates"].DataPropertyName = "ReleaseDates";
+
                 int scheduleId = (int)dgv_filmSchedule.SelectedRows[0].Cells["ScheduleId"].Value;
                 int filmId = (int)dgv_filmSchedule.SelectedRows[0].Cells["filmId"].Value;
                 string name = dgv_filmSchedule.SelectedRows[0].Cells["filmName"].Value.ToString();
                 int videoHallId = (int)dgv_filmSchedule.SelectedRows[0].Cells["videoHallId"].Value;//放映厅Id
                 string filmBeginTime = dgv_filmSchedule.SelectedRows[0].Cells["filmBeginTime"].Value.ToString(); //放映开始时间
                 string filmEndTime = dgv_filmSchedule.SelectedRows[0].Cells["filmEndTime"].Value.ToString();//放映结束时间
+                string releaseDates = dgv_filmSchedule.SelectedRows[0].Cells["releaseDates"].Value.ToString();//放映日期
+
                 lbl_scheduleId.Text = scheduleId.ToString();
                 lbl_filmId.Text = filmId.ToString();
                 txt_filmName.Text = name;
                 cbo_videoHallNO.SelectedIndex = videoHallId;
                 cbo_filmBeginTime.Text = filmBeginTime;
                 txt_filmEndTime.Text = filmEndTime;
+                //日期的格式 yyyy/mm/dd
+                dtp_ReleaseDates.Text = releaseDates.Substring(0, releaseDates.LastIndexOf('/'));
             }
             else
             {
@@ -312,7 +317,7 @@ namespace Cinema
         /// </summary>
         private void InitVideoHallNO()
         {
-            cbo_videoHallNO.ValueMember = "Id";
+            cbo_videoHallNO.ValueMember = "VideoHallId";
             cbo_videoHallNO.DisplayMember = "StrId";
             List<CommonVideoHall> v = new List<CommonVideoHall>();
             v.Add(new CommonVideoHall(0, "请选择放映厅"));
@@ -335,7 +340,7 @@ namespace Cinema
 
         private void ManageFilmSchedule_FormClosed(object sender, FormClosedEventArgs e)
         {
-            sellTicket.Show();//窗口关闭时，主窗体显示
+            m.Show();//窗口关闭时，主窗体显示
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -359,18 +364,21 @@ namespace Cinema
             lbl_filmId.Text = id.ToString();
             txt_filmName.Text = name;
             //已经排的
-            if (grp_schedule.Text.Contains("已经排"))
+            if (grp_schedule.Text.Contains("已排"))
             {
-                int scheduleId = (int)dgv_filmSchedule.SelectedRows[0].Cells["ScheduleId"].Value;
+                int scheduleId = (int)dgv_filmSchedule.Rows[e.RowIndex].Cells["ScheduleId"].Value;
                 int videoHallId = (int)dgv_filmSchedule.Rows[e.RowIndex].Cells["videoHallId"].Value;//放映厅Id
                 string filmBeginTime = dgv_filmSchedule.Rows[e.RowIndex].Cells["filmBeginTime"].Value.ToString(); //放映开始时间
                 string filmEndTime = dgv_filmSchedule.Rows[e.RowIndex].Cells["filmEndTime"].Value.ToString();//放映结束时间
+                string releaseDates = dgv_filmSchedule.Rows[e.RowIndex].Cells["releaseDates"].Value.ToString();//放映日期                
+                
                 //-----------这样做会有问题吗---------------------
                 //更新：暂时没有
                 cbo_videoHallNO.Text = videoHallId.ToString();
                 cbo_filmBeginTime.Text = filmBeginTime;
                 txt_filmEndTime.Text = filmEndTime;
                 lbl_scheduleId.Text = scheduleId.ToString();
+                dtp_ReleaseDates.Text = releaseDates.Substring(0, releaseDates.LastIndexOf('/'));
             }
         }
 

@@ -10,7 +10,7 @@ namespace CinemaDAL
     public class FileOperationDAL
     {
         //文本路径
-        private static string path = @"F:\影片售票信息\";
+        private static string path = @"影片售票信息\";
 
         #region 创建一个文本文件
         /// <summary>

@@ -26,7 +26,7 @@ namespace CinemaDAL
                                  };
             paras[0].Value = id;
             paras[1].Value = pwd;
-            return Dao.ExecuteScalar(sql, paras);
+            return SQLHelper.ExecuteScalar(sql, paras);
         }
     }
 }

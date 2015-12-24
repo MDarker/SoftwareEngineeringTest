@@ -13,7 +13,6 @@ namespace CinemaBLL
     public class FilmMsgBLL
     {
         FilmMsgDAL filmMsg = new FilmMsgDAL();
-
         /// <summary>
         /// 获取还没排的影片信息
         /// </summary>
@@ -21,6 +20,78 @@ namespace CinemaBLL
         public DataTable GetNoScheduleFilm()
         {
             return filmMsg.GetNoScheduleFilm();
+        }
+
+        /// <summary>
+        /// 获取全部影片信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllFilmsMsg()
+        {
+            DateTime nowDate = DateTime.Now;
+            string strDate = nowDate.ToString();
+            strDate = DateFormat.GetRightDateFormat(strDate);
+            //自动下映过期的电影
+            filmMsg.DownLineOverdueFilm(strDate);
+
+            return filmMsg.GetAllFilmsMsg();
+        }
+
+        /// <summary>
+        /// 添加电影
+        /// </summary>
+        /// <param name="fmc"></param>
+        /// <returns></returns>
+        public bool AddFilm(FilmMsgCommon fmc)
+        {
+            if (filmMsg.AddFilm(fmc) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 删除电影
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public bool DeleteFilm(int filmId)
+        {
+            if (filmMsg.DeleteFilm(filmId) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 电影下映
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public bool FilmDownLine(int filmId)
+        {
+            if (filmMsg.FilmDownLine(filmId) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 修改电影信息
+        /// </summary>
+        /// <param name="fmc"></param>
+        /// <returns></returns>
+        public bool ModifyFilm(int oldfilmId, FilmMsgCommon fmc)
+        {
+            fmc.Deadline = DateFormat.GetRightDateFormat(fmc.Deadline);
+            if (filmMsg.ModifyFilm(oldfilmId, fmc) > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -51,10 +122,21 @@ namespace CinemaBLL
             return false;
         }
 
-
-        FilmMsgDAL fmd = new FilmMsgDAL();
-        FilmMsgCommon fmc = new FilmMsgCommon();
-        InvitationCodeMsg icm = new InvitationCodeMsg();
+        private string GetRightDateFormat(string oldDate)
+        {
+            string fDate = oldDate;
+            if (fDate.Contains("星期"))
+            {
+                fDate = (Convert.ToDateTime(fDate.Substring(0, fDate.IndexOf("星") - 1)).ToShortDateString());
+                fDate = fDate.Substring(0, fDate.IndexOf("星") - 1);
+            }
+            else
+            {
+                fDate = Convert.ToDateTime(fDate).ToShortDateString();
+                fDate = fDate.Substring(0, fDate.LastIndexOf('/'));
+            }
+            return fDate;
+        }
 
         #region 获取影片信息
         /// <summary>
@@ -63,7 +145,8 @@ namespace CinemaBLL
         /// <param name="fileName"></param>
         public FilmMsgCommon GetFilmMsg(string filmName)
         {
-            SqlDataReader sdr = fmd.GetFilmMsg(filmName);
+            SqlDataReader sdr = filmMsg.GetFilmMsg(filmName);
+            FilmMsgCommon fmc = new FilmMsgCommon();
             if (sdr.HasRows)
             {
                 while (sdr.Read())
@@ -88,9 +171,11 @@ namespace CinemaBLL
         /// <summary>
         /// 获取影片名、放映字段、放映号
         /// </summary>
-        public DataTable GetFilmNamesAndShowtimes()
+        public DataTable GetFilmPlayList()
         {
-            return fmd.GetFilmNamesAndShowtimes();
+            string date = DateTime.Now.ToShortDateString();
+            date = DateFormat.GetRightDateFormat(date);
+            return filmMsg.GetFilmPlayList(date);
         }
         #endregion
 
@@ -103,7 +188,11 @@ namespace CinemaBLL
         /// <param name="filmId"></param>
         public int GetTicketCounts(int ticketCounts, string playTimes, int filmId)
         {
-            return fmd.GetTicketCounts(ticketCounts, playTimes, filmId);
+            //将playTime 重新编程开始时间和截止时间
+            string[] temps = playTimes.Split('-');
+            string filmBeginTime = temps[0];
+            string filmEndinTime = temps[1];
+            return filmMsg.GetTicketCounts(ticketCounts, filmBeginTime, filmEndinTime, filmId);
         }
         #endregion
 
@@ -113,9 +202,10 @@ namespace CinemaBLL
         /// </summary>
         /// <param name="invitationCode"></param>
         /// <returns></returns>
-        public InvitationCodeMsg CheckInvitationCode(string invitationCode)
+        public InvitationCodeMsgCommon CheckInvitationCode(string invitationCode)
         {
-            SqlDataReader sdr = fmd.CheckInvitationCode(invitationCode);
+            SqlDataReader sdr = filmMsg.CheckInvitationCode(invitationCode);
+            InvitationCodeMsgCommon icm = new InvitationCodeMsgCommon();
             if (sdr.HasRows)
             {
                 while (sdr.Read())
@@ -142,7 +232,7 @@ namespace CinemaBLL
         /// <returns></returns>
         public int UpdateInvitationState(string invitationCode)
         {
-            return fmd.UpdateInvitationState(invitationCode);
+            return filmMsg.UpdateInvitationState(invitationCode);
         }
         #endregion
 
@@ -152,8 +242,87 @@ namespace CinemaBLL
         /// </summary>
         public DataTable GetFilmReleaseDate(string dateTime)
         {
-            dateTime = dateTime.Substring(0, 9);
-            return fmd.GetFilmReleaseDate(dateTime);
+            dateTime = DateFormat.GetRightDateFormat(dateTime);
+            return filmMsg.GetFilmReleaseDate(dateTime);
+        }
+        #endregion
+
+        #region  获取数据库中已有的指定日期的电影，指定厅的已售出的座位信息
+        /// <summary>
+        /// 获取数据库中已有的指定日期的电影，指定厅的已售出的座位信息
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        public List<string> GetSitulationOfTickets(SitulationOfTickets ticketMsgs)
+        {
+            List<string> SeatsMsg = new List<string>();
+            ticketMsgs.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsgs.ReleaseDates);
+            SqlDataReader sdr = filmMsg.GetSitulationOfTickets(ticketMsgs);
+            if (sdr.HasRows)
+            {
+                while (sdr.Read())
+                {
+                    SeatsMsg.Add(sdr[0].ToString());
+                }
+            }
+            return SeatsMsg;
+        }
+        #endregion
+
+        #region  获取数据库中已有的指定日期的电影，指定厅的指定座位状态的信息，还未应用
+        /// <summary>
+        /// 获取数据库中已有的指定日期的电影，指定厅的指定座位状态的信息
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        public int GetSeatStates(SitulationOfTickets ticketMsgs)
+        {
+            ticketMsgs.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsgs.ReleaseDates);
+            SqlDataReader sdr = filmMsg.GetSeatStates(ticketMsgs);
+            if (sdr.HasRows)
+            {
+                while (sdr.Read())
+                {
+                    int seatsState = (int)sdr[0];
+                    return seatsState;
+                }
+            }
+            return 0;//错误
+        }
+
+        #endregion
+
+        #region 更新座位的状态
+        /// <summary>
+        ///   更新座位的状态
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        /// <returns></returns>
+        public int UpdateSeatsState(SitulationOfTickets ticketMsgs)
+        {
+            ticketMsgs.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsgs.ReleaseDates);
+            return filmMsg.UpdateSeatsState(ticketMsgs);
+        }
+        #endregion
+
+        #region 插入座位信息
+        /// <summary>
+        /// 插入座位信息
+        /// </summary>
+        /// <param name="ticketMsgs"></param>
+        public int InsertSellTicetsMsg(SitulationOfTickets ticketMsgs)
+        {
+            ticketMsgs.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsgs.ReleaseDates);
+            return filmMsg.InsertSellTicetsMsg(ticketMsgs);
+        }
+        #endregion
+
+        #region 删除锁定状态的电影票座位信息
+        /// <summary>
+        /// 删除锁定状态的电影票座位信息
+        /// </summary>
+        public int DeleteSeatMsg(SitulationOfTickets ticketMsgs)
+        {
+            ticketMsgs.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsgs.ReleaseDates);
+            return filmMsg.DeleteSeatMsg(ticketMsgs);
         }
         #endregion
     }

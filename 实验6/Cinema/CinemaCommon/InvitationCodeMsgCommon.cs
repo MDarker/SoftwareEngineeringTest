@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaCommon
 {
-    public class InvitationCodeMsg
+    public class InvitationCodeMsgCommon
     {
         private int filmId;
 

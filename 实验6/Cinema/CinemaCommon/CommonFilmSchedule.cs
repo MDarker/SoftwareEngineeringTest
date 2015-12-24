@@ -15,6 +15,8 @@ namespace CinemaCommon
         public string FilmEndTime { get; set; }
         public int FilmBeginId { get; set; }
         public int FilmEndId { get; set; }
-
+        public string ReleaseDates { get; set; }
+        public int TicketPrice { get; set; }
+        public int PreferentialPrice { get; set; }
     }
 }

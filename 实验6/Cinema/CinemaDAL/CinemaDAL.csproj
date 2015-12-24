@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="FileOperationDAL.cs" />
     <Compile Include="FilmMsgDAL.cs" />
+    <Compile Include="FilmToExcelDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FilmScheduleDAL.cs" />

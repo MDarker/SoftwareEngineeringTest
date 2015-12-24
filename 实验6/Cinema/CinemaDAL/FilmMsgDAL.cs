@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using CinemaSQLHelper;
+using CinemaCommon;
 
 namespace CinemaDAL
 {
@@ -20,7 +21,175 @@ namespace CinemaDAL
             string sql = " select FilmId,FilmName,FilmTimes,ScheduleTime " +
                 " from dbo.FilmsMsg " +
                 " where FilmState=1 order by FilmId ";
-            return Dao.GetDataSet(sql);
+            return SQLHelper.GetDataTable(sql);
+        }
+
+        /// <summary>
+        /// 获取全部影片信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllFilmsMsg()
+        {
+            string sql = " select FilmId,FilmName,FilmTimes,Director,Protagonists," +
+                " FilmType,Producers,Country,FilmState,ScheduleTime,Deadline " +
+                " from dbo.FilmsMsg " +
+                " where FilmState=1 order by FilmId ";
+            return SQLHelper.GetDataTable(sql);
+        }
+
+        /// <summary>
+        /// 添加电影
+        /// </summary>
+        /// <param name="fmc"></param>
+        /// <returns></returns>
+        public int AddFilm(FilmMsgCommon fmc)
+        {
+            if (IsReapt(fmc.FilmId))
+            {
+                return 0;
+            }
+            string sql = " insert into FilmsMsg(FilmId,FilmName,FilmTimes,Director,Protagonists," +
+                "FilmType,Producers,Country,FilmState,ScheduleTime,Deadline) " +
+                " values(@FilmId,@FilmName,@FilmTimes,@Director,@Protagonists," +
+                "@FilmType,@Producers,@Country,@FilmState,@ScheduleTime,@Deadline) ";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@FilmId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmTimes",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Director",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Protagonists",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmType",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Producers",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Country",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmState",SqlDbType.Int,4),
+                                     new SqlParameter("@ScheduleTime",SqlDbType.Int,4),
+                                     new SqlParameter("@Deadline",SqlDbType.Date)
+                                 };
+            paras[0].Value = fmc.FilmId;
+            paras[1].Value = fmc.FilmName;
+            paras[2].Value = fmc.FilmTimes;
+            paras[3].Value = fmc.Director;
+            paras[4].Value = fmc.Protagonists;
+            paras[5].Value = fmc.FilmType;
+            paras[6].Value = fmc.Producers;
+            paras[7].Value = fmc.Country;
+            paras[8].Value = fmc.FilmState;
+            paras[9].Value = fmc.ScheduleTime;
+            paras[10].Value = fmc.Deadline;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+
+        /// <summary>
+        ///  删除电影
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public int DeleteFilm(int filmId)
+        {
+            string sql = " delete from FilmsMsg " +
+                " where FilmId=@FilmId ";
+            SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
+            para.Value = filmId;
+            return SQLHelper.ExecuteNonQuery(sql, para);
+        }
+
+        /// <summary>
+        /// 下映过期的电影
+        /// </summary>
+        /// <param name="nowDate"></param>
+        /// <returns></returns>
+        public int DownLineOverdueFilm(string nowDate)
+        {
+            string sql = " select FilmId from dbo.FilmsMsg " +
+                " where Deadline<@nowDate ";
+            SqlParameter para = new SqlParameter("@nowDate", SqlDbType.Date);
+            para.Value = nowDate;
+            object obj = SQLHelper.ExecuteScalar(sql, para);
+            if (obj == null)
+            {
+                return 0;
+            }
+            int filmId = (int)obj;
+            return this.FilmDownLine(filmId);
+        }
+
+        /// <summary>
+        /// 电影下映
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public int FilmDownLine(int filmId)
+        {
+            string sql = " update FilmsMsg " +
+                " set FilmType=-1 " +
+                " where FilmId=@FilmId ";
+            SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
+            para.Value = filmId;
+            return SQLHelper.ExecuteNonQuery(sql, para);
+        }
+
+        /// <summary>
+        /// 修改电影信息
+        /// </summary>
+        /// <param name="fmc"></param>
+        /// <returns></returns>
+        public int ModifyFilm(int oldfilmId, FilmMsgCommon fmc)
+        {
+            if (oldfilmId != fmc.FilmId)
+            {
+                if (IsReapt(fmc.FilmId))
+                {
+                    return 0;
+                }
+            }
+            string sql = " update FilmsMsg " +
+                " set FilmId=@FilmId,FilmName=@FilmName,FilmTimes=@FilmTimes," +
+                " Director=@Director,Protagonists=@Protagonists," +
+                " FilmType=@FilmType,Producers=@Producers," +
+                " Country=@Country,Deadline=@Deadline " +
+                " where FilmId=@oldfilmId ";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@FilmId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmTimes",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Director",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Protagonists",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmType",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Producers",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Country",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Deadline",SqlDbType.Date),
+                                     new SqlParameter("@oldfilmId",SqlDbType.Int,4)
+                                 };
+            paras[0].Value = fmc.FilmId;
+            paras[1].Value = fmc.FilmName;
+            paras[2].Value = fmc.FilmTimes;
+            paras[3].Value = fmc.Director;
+            paras[4].Value = fmc.Protagonists;
+            paras[5].Value = fmc.FilmType;
+            paras[6].Value = fmc.Producers;
+            paras[7].Value = fmc.Country;
+            paras[8].Value = fmc.Deadline;
+            paras[9].Value = oldfilmId;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+
+        /// <summary>
+        /// 是否重复
+        /// </summary>
+        /// <param name="videoHallId"></param>
+        /// <returns></returns>
+        private bool IsReapt(int filmId)
+        {
+            string sql = " select COUNT(*) from FilmsMsg " +
+                " where FilmId=@filmId ";
+            SqlParameter para = new SqlParameter("@filmId", SqlDbType.Int, 4);
+            para.Value = filmId;
+            int obj = (int)SQLHelper.ExecuteScalar(sql, para);
+            if (obj > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -35,7 +204,7 @@ namespace CinemaDAL
                 " where FilmId=@FilmId and FilmState=1 ";
             SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
             para.Value = filmId;
-            return Dao.ExecuteNonQuery(sql, para);
+            return SQLHelper.ExecuteNonQuery(sql, para);
         }
 
         /// <summary>
@@ -50,8 +219,9 @@ namespace CinemaDAL
                 " where FilmId=@FilmId and FilmState=1 ";
             SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
             para.Value = filmId;
-            return Dao.ExecuteNonQuery(sql, para);
+            return SQLHelper.ExecuteNonQuery(sql, para);
         }
+
 
         #region 获取影片信息
         /// <summary>
@@ -60,20 +230,21 @@ namespace CinemaDAL
         /// <param name="fileName"></param>
         public SqlDataReader GetFilmMsg(string filmName)
         {
-            string sql = "select * from filmsMsg ";
-            sql += "where FilmName='" + filmName + "'";
-            return Dao.ExecuteReader(sql, null);
+            string sql = " select * from filmsMsg " +
+            " where FilmName='" + filmName + "'";
+            return SQLHelper.ExecuteReader(sql, null);
         }
         #endregion
 
-        #region 获取影片名、放映字段、放映号
+        #region 获取放映列表
         /// <summary>
-        /// 获取影片名、放映字段、放映号
+        /// 获取放映列表
         /// </summary>
-        public DataTable GetFilmNamesAndShowtimes()
+        public DataTable GetFilmPlayList(string date)
         {
-            string sql = "select * from [dbo].[FilmPlay]";
-            return Dao.GetDataSet(sql);
+            string sql = " select * from [dbo].[FilmSchedule] " +
+                " where ReleaseDates>='" + date + "' ";
+            return SQLHelper.GetDataTable(sql);
         }
         #endregion
 
@@ -84,20 +255,77 @@ namespace CinemaDAL
         /// <param name="ticketCounts"></param>
         /// <param name="playTimes"></param>
         /// <param name="filmId"></param>
-        public int GetTicketCounts(int ticketCounts, string playTimes, int filmId)
+        public int GetTicketCounts(int ticketCounts, string filmBeginTime, string filmEndTime, int filmId)
         {
-            string sql = "update [dbo].[FilmPlay] ";
-            sql += "set SellTickets+=@SellTickets ";
-            sql += " where PlayTime =@PlayTime and FilmId=@FilmId ";
+            string sql = "update FilmSchedule " +
+                " set SellTickets+=@SellTickets " +
+                " where FilmBeginTime=@FilmBeginTime and FilmId=@FilmId and FilmEndTime=@FilmEndTime";
             SqlParameter[] paras ={
                                      new SqlParameter("@SellTickets",SqlDbType.Int,4),
-                                     new SqlParameter("@PlayTime",SqlDbType.VarChar,50),
-                                     new SqlParameter("@FilmId",SqlDbType.Int,4)
+                                     new SqlParameter("@FilmBeginTime",SqlDbType.VarChar,50),
+                                     new SqlParameter("@FilmId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmEndTime",SqlDbType.VarChar,50),
                                  };
             paras[0].Value = ticketCounts;
-            paras[1].Value = playTimes;
+            paras[1].Value = filmBeginTime;
             paras[2].Value = filmId;
-            return Dao.ExecuteNonQuery(sql, paras);
+            paras[3].Value = filmEndTime;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+        #endregion
+
+
+        #region  获取数据库中已有的指定日期的电影，指定厅的已的各座位的信息（根据已售出，被锁定，可买三中情况划分）
+        /// <summary>
+        /// 获取数据库中已有的指定日期的电影，指定厅的已的各座位的信息（已售出，被锁定，可买）
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        public SqlDataReader GetSitulationOfTickets(SitulationOfTickets ticketMsgs)
+        {
+            string sql = "select SeatsNumber from [dbo].[SitulationOfTickets]";
+
+            sql += "where ReleaseDates=@ReleaseDates  and VideoHallId =@VideoHallId "
+                    + "and Playtimes=@Playtimes and FilmName=@FilmName and SeatsState=@SeatsState";
+            SqlParameter[] paras ={
+                                   new SqlParameter("@ReleaseDates",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@VideoHallId",SqlDbType.Int,4 ),
+                                   new SqlParameter("@Playtimes",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@FilmName",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@SeatsState",SqlDbType.Int,4  )
+                                  };
+            paras[0].Value = ticketMsgs.ReleaseDates;
+            paras[1].Value = ticketMsgs.videoHallId;
+            paras[2].Value = ticketMsgs.Playtime;
+            paras[3].Value = ticketMsgs.FilmName;
+            paras[4].Value = ticketMsgs.SeatsState;
+            return SQLHelper.ExecuteReader(sql, paras);
+        }
+        #endregion
+
+        #region  获取数据库中已有的指定日期的电影，指定厅的指定座位状态的信息
+        /// <summary>
+        /// 获取数据库中已有的指定日期的电影，指定厅的指定座位状态的信息
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        public SqlDataReader GetSeatStates(SitulationOfTickets ticketMsgs)
+        {
+            string sql = "select SeatsState from [dbo].[SitulationOfTickets]";
+
+            sql += "where ReleaseDates=@ReleaseDates  and VideoHallId =@VideoHallId "
+                    + "and Playtimes=@Playtimes and FilmName=@FilmName and SeatsNumber=@SeatsNumber";
+            SqlParameter[] paras ={
+                                   new SqlParameter("@ReleaseDates",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@VideoHallId",SqlDbType.Int,4 ),
+                                   new SqlParameter("@Playtimes",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@FilmName",SqlDbType.VarChar,50 ),
+                                   new SqlParameter("@SeatsNumber",SqlDbType.VarChar,10  )
+                                  };
+            paras[0].Value = ticketMsgs.ReleaseDates;
+            paras[1].Value = ticketMsgs.videoHallId;
+            paras[2].Value = ticketMsgs.Playtime;
+            paras[3].Value = ticketMsgs.FilmName;
+            paras[4].Value = ticketMsgs.SeatsNumber;
+            return SQLHelper.ExecuteReader(sql, paras);
         }
         #endregion
 
@@ -109,11 +337,11 @@ namespace CinemaDAL
         /// <returns></returns>
         public SqlDataReader CheckInvitationCode(string invitationCode)
         {
-            string sql = "select * from [dbo].[InviteCode]";
-            sql += "where InvitationCode=@InvitationCode";
+            string sql = "select * from [dbo].[InviteCode]" +
+                "where InvitationCode=@InvitationCode";
             SqlParameter para = new SqlParameter("@InvitationCode", SqlDbType.VarChar, 50);
             para.Value = invitationCode;
-            return Dao.ExecuteReader(sql, para);
+            return SQLHelper.ExecuteReader(sql, para);
         }
         #endregion
 
@@ -125,10 +353,10 @@ namespace CinemaDAL
         /// <returns></returns>
         public int UpdateInvitationState(string invitationCode)
         {
-            string sql = "update [dbo].[InviteCode] ";
-            sql += "Set CodeState=0";
-            sql += " where InvitationCode='" + invitationCode + "'";
-            return Dao.ExecuteNonQuery(sql, null);
+            string sql = "update [dbo].[InviteCode] " +
+                " set CodeState=0 " +
+                " where InvitationCode='" + invitationCode + "'";
+            return SQLHelper.ExecuteNonQuery(sql, null);
         }
         #endregion
 
@@ -138,9 +366,93 @@ namespace CinemaDAL
         /// </summary>
         public DataTable GetFilmReleaseDate(string dateTime)
         {
-            string sql = "select * from [dbo].[FilmPlay]";
-            sql += "where ReleaseDates='" + dateTime + "' ";
-            return Dao.GetDataSet(sql);
+            string sql = " select * from FilmSchedule " +
+                " where ReleaseDates='" + dateTime + "' ";
+            return SQLHelper.GetDataTable(sql);
+        }
+        #endregion
+
+        #region 更新座位的状态
+        /// <summary>
+        ///  更新座位的状态
+        /// </summary>
+        /// <param name="situlationOfTickets"></param>
+        /// <returns></returns>
+        public int UpdateSeatsState(SitulationOfTickets situlationOfTickets)
+        {
+            string sql = "update [dbo].[SitulationOfTickets] "
+            + " set SeatsState=@SeatsState "
+            + " where  ReleaseDates=@releasedates and VideoHallId =@videoHallId "
+            + " and FilmName=@filmName and Playtimes=@playtimes and SeatsNumber=@seatsNumber";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@SeatsState",SqlDbType.Int,4),
+                                     new SqlParameter ("@ReleaseDates",SqlDbType.VarChar,50),
+                                     new SqlParameter ("@VideoHallId",SqlDbType.Int,4),
+                                     new SqlParameter ("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter ("@Playtimes",SqlDbType.VarChar,50),
+                                     new SqlParameter ("@SeatsNumber",SqlDbType.VarChar,10)
+                                 };
+            paras[0].Value = situlationOfTickets.SeatsState;
+            paras[1].Value = situlationOfTickets.ReleaseDates;
+            paras[2].Value = situlationOfTickets.videoHallId;
+            paras[3].Value = situlationOfTickets.FilmName;
+            paras[4].Value = situlationOfTickets.Playtime;
+            paras[5].Value = situlationOfTickets.SeatsNumber;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+        #endregion
+
+        #region 插入座位信息
+        /// <summary>
+        /// 插入座位信息
+        /// </summary>
+        /// <param name="ticketMsgs"></param>
+        public int InsertSellTicetsMsg(SitulationOfTickets ticketMsgs)
+        {
+            string sql = "insert into [dbo].[SitulationOfTickets] "
+            + " values(@ReleaseDates,@VideoHallId,@FilmName,@Playtimes,@SeatsNumber,@SeatsState) ";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@ReleaseDates",SqlDbType.VarChar,50),
+                                     new SqlParameter("@VideoHallId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Playtimes",SqlDbType.VarChar,50),
+                                     new SqlParameter("@SeatsNumber",SqlDbType.VarChar,4),
+                                     new SqlParameter("@SeatsState",SqlDbType.Int,4)
+                                 };
+            paras[0].Value = ticketMsgs.ReleaseDates;
+            paras[1].Value = ticketMsgs.videoHallId;
+            paras[2].Value = ticketMsgs.FilmName;
+            paras[3].Value = ticketMsgs.Playtime;
+            paras[4].Value = ticketMsgs.SeatsNumber;
+            paras[5].Value = ticketMsgs.SeatsState;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+        #endregion
+
+        #region 删除锁定状态的电影票座位信息
+        /// <summary>
+        /// 删除锁定状态的电影票座位信息
+        /// </summary>
+        public int DeleteSeatMsg(SitulationOfTickets ticketMsgs)
+        {
+            string sql = "Delete [dbo].[SitulationOfTickets] "
+            + " where ReleaseDates=@ReleaseDates and VideoHallId=@VideoHallId and FilmName=@FilmName "
+            + " and Playtimes=@Playtimes and SeatsNumber=@SeatsNumber and SeatsState=@SeatsState";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@ReleaseDates",SqlDbType.VarChar,50),
+                                     new SqlParameter("@VideoHallId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Playtimes",SqlDbType.VarChar,20),
+                                     new SqlParameter("@SeatsNumber",SqlDbType.VarChar,10),
+                                     new SqlParameter("@SeatsState",SqlDbType.Int,4)
+                                 };
+            paras[0].Value = ticketMsgs.ReleaseDates;
+            paras[1].Value = ticketMsgs.videoHallId;
+            paras[2].Value = ticketMsgs.FilmName;
+            paras[3].Value = ticketMsgs.Playtime;
+            paras[4].Value = ticketMsgs.SeatsNumber;
+            paras[5].Value = 0;
+            return SQLHelper.ExecuteNonQuery(sql, paras);
         }
         #endregion
     }

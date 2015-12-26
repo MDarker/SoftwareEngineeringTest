@@ -95,6 +95,24 @@ namespace CinemaBLL
         }
 
         /// <summary>
+        /// 影片是否排过
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public bool IsSchedule(int filmId)
+        {
+            object obj = filmMsg.IsSchedule(filmId);
+            if (obj != null)
+            {
+                if ((int)obj > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// 记录排片次数  加 
         /// </summary>
         /// <param name="filmId"></param>
@@ -120,22 +138,6 @@ namespace CinemaBLL
                 return true;
             }
             return false;
-        }
-
-        private string GetRightDateFormat(string oldDate)
-        {
-            string fDate = oldDate;
-            if (fDate.Contains("星期"))
-            {
-                fDate = (Convert.ToDateTime(fDate.Substring(0, fDate.IndexOf("星") - 1)).ToShortDateString());
-                fDate = fDate.Substring(0, fDate.IndexOf("星") - 1);
-            }
-            else
-            {
-                fDate = Convert.ToDateTime(fDate).ToShortDateString();
-                fDate = fDate.Substring(0, fDate.LastIndexOf('/'));
-            }
-            return fDate;
         }
 
         #region 获取影片信息
@@ -325,5 +327,25 @@ namespace CinemaBLL
             return filmMsg.DeleteSeatMsg(ticketMsgs);
         }
         #endregion
+
+        /// <summary>
+        /// 获取当前电影票座位状态
+        /// </summary>
+        /// <param name="ticketMsg"></param>
+        /// <returns></returns>
+        public int GetTicketState(SitulationOfTickets ticketMsg)
+        {
+            ticketMsg.ReleaseDates = DateFormat.GetRightDateFormat(ticketMsg.ReleaseDates);
+            return filmMsg.GetTicketState(ticketMsg);
+        }
+
+        /// <summary>
+        /// 删除额外的座位状态
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteExtraTicketState()
+        {
+            return filmMsg.DeleteExtraTicketState();
+        }
     }
 }

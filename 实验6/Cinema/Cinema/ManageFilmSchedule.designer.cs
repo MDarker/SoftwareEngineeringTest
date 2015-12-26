@@ -98,6 +98,7 @@
             // 
             this.dgv_filmSchedule.AllowUserToAddRows = false;
             this.dgv_filmSchedule.AllowUserToDeleteRows = false;
+            this.dgv_filmSchedule.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

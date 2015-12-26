@@ -40,14 +40,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(27, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "工号：";
+            this.label1.Text = "管理员账号：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 60);
+            this.label2.Location = new System.Drawing.Point(53, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // btn_login
             // 
-            this.btn_login.Location = new System.Drawing.Point(108, 91);
+            this.btn_login.Location = new System.Drawing.Point(132, 86);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(75, 23);
             this.btn_login.TabIndex = 3;
@@ -65,7 +65,7 @@
             // 
             // txt_pwd
             // 
-            this.txt_pwd.Location = new System.Drawing.Point(74, 57);
+            this.txt_pwd.Location = new System.Drawing.Point(107, 56);
             this.txt_pwd.Name = "txt_pwd";
             this.txt_pwd.PasswordChar = '●';
             this.txt_pwd.Size = new System.Drawing.Size(100, 21);
@@ -74,7 +74,7 @@
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(74, 16);
+            this.txt_id.Location = new System.Drawing.Point(108, 16);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(100, 21);
             this.txt_id.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(209, 121);
+            this.ClientSize = new System.Drawing.Size(242, 121);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.txt_pwd);
             this.Controls.Add(this.btn_login);
@@ -95,7 +95,7 @@
             this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "登录";
+            this.Text = "管理员登录界面";
             this.ResumeLayout(false);
             this.PerformLayout();
 

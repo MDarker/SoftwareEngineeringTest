@@ -3,11 +3,6 @@ E:\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
 E:\Cinema\CinemaCommon\obj\Debug\CinemaCommon.csprojResolveAssemblyReference.cache
 E:\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
 E:\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb
-E:\NET期末项目\Cinema\CinemaCommon\bin\Debug\CinemaCommon.dll
-E:\NET期末项目\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
-E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
-E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb
-E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.csprojResolveAssemblyReference.cache
 C:\Users\crazy\Desktop\Cinema\Cinema\CinemaCommon\bin\Debug\CinemaCommon.dll
 C:\Users\crazy\Desktop\Cinema\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
 C:\Users\crazy\Desktop\Cinema\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
@@ -21,7 +16,13 @@ C:\Users\LinG\Desktop\Cinema1.8界面重构版\Cinema\Cinema\CinemaCommon\bin\De
 C:\Users\LinG\Desktop\Cinema1.8界面重构版\Cinema\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
 C:\Users\LinG\Desktop\Cinema1.8界面重构版\Cinema\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
 C:\Users\LinG\Desktop\Cinema1.8界面重构版\Cinema\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb
+E:\NET期末项目\Cinema\CinemaCommon\bin\Debug\CinemaCommon.dll
+E:\NET期末项目\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
+E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.csprojResolveAssemblyReference.cache
+E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
+E:\NET期末项目\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb
 E:\学习\大三\C#实验\Cinema\CinemaCommon\bin\Debug\CinemaCommon.dll
 E:\学习\大三\C#实验\Cinema\CinemaCommon\bin\Debug\CinemaCommon.pdb
+E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.csprojResolveAssemblyReference.cache
 E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.dll
 E:\学习\大三\C#实验\Cinema\CinemaCommon\obj\Debug\CinemaCommon.pdb

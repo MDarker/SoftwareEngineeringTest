@@ -86,6 +86,33 @@ namespace CinemaBLL
             return false;
         }
 
+        /// <summary>
+        /// 放映厅当天是否要使用，以后已经排片
+        /// </summary>
+        /// <param name="videoHallId"></param>
+        /// <returns></returns>
+        public bool IsVideoHallUsing(int videoHallId)
+        {
+            List<DateTime> list = new List<DateTime>();
+            SqlDataReader sdr = videoHall.IsVideoHallUsing(videoHallId);
+            if (sdr.HasRows)
+            {
+                while (sdr.Read())
+                {
+                    list.Add(sdr.GetDateTime(0));
+                }
+            }
+            sdr.Close();
+            foreach (DateTime item in list)
+            {
+                if (item >= DateTime.Now.Date)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #region 获取放映厅的信息
         /// <summary>
         /// 获取放映厅的信息

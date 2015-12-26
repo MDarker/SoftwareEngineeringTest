@@ -15,7 +15,6 @@ namespace Cinema
         //创建对象
         FilmMsgBLL fmb = new FilmMsgBLL();
         FilmMsgCommon fmc = new FilmMsgCommon();
-        FileOperationBLLL fob = new FileOperationBLLL();
         InvitationCodeMsgCommon imc = new InvitationCodeMsgCommon();
         VideoHallBLL vhb = new VideoHallBLL();
         Hashtable ht = new Hashtable();
@@ -161,8 +160,6 @@ namespace Cinema
                         tickentCounts++;
                     }
                 }
-                //将符合的信息传到文本中，并返回添加的票数
-                ticketCounts = fob.AppendTicketsMsg(filmName, ticketMsgs);
                 //将卖出的电影票数量传回数据库，返回受影响的行数
                 int isSelledTickets = fmb.GetTicketCounts(ticketCounts, this.trv1_movieList.SelectedNode.Text.Trim(), filmid);
                 if (isSelledTickets > 0)//如果大于0，则操作成功
@@ -247,71 +244,6 @@ namespace Cinema
         }
         #endregion
 
-        #region 获取当前客户端电影票出售情况，使用文本保存。
-        /// <summary>
-        /// 获取电影票出售情况
-        /// </summary>
-        private void GetSellTicketSeats(string filmName)
-        {
-            //判断指定电影的文本文件是否存在前还原（重置)控件属性
-            ResetControls();
-            //判断是否已存在存储该电影的电影票的文本文件，存在，得到已出售的电影票的信息，若不存在，则创建并向其中加入内容
-            if (fob.JudgeFileExists(filmName))
-            {
-                string checkMsg = filmName + ',' + cboReleaseDate.Text.Substring(0, 9) + ',' + videoHallid + ',' + this.trv1_movieList.SelectedNode.Text.Trim();
-                //打开并遍历文件，获取已卖出的电影票座位号字符串数组
-                //判断是否存在座位信息
-                List<string> seatsMsg = fob.GetSeatsMsg(filmName, checkMsg);
-                if (seatsMsg != null)
-                {
-                    foreach (string seatMsg in seatsMsg)
-                    {
-                        foreach (LinkLabel item in (List<LinkLabel>)ht[videoHallid])
-                        {
-                            if (item.Text.Trim() == seatMsg.Trim())//如果存在，则设其控件属性enable为false
-                            {
-                                item.Enabled = false;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    //返回的数组为空，说明暂时还没有座位出售信息，不做操作
-                }
-            }
-            else
-            {
-                //创建一个保存电影票的文本文件
-                fob.CreateTextFile(filmName);
-            }
-        }
-        #endregion
-
-        #region 向文件中添加售票的信息
-        /// <summary>
-        /// 向文件中添加售票的信息
-        /// </summary>
-        /// <param name="sw"></param>
-        private int AddTicketMsg(StreamWriter sw)
-        {
-            int ticketCounts = 0;
-            List<LinkLabel> ls = ht[videoHallid] as List<LinkLabel>;
-            foreach (LinkLabel item in ls)
-            {
-                if (item.LinkVisited == true && item.Enabled == true)
-                {
-                    item.Enabled = false;
-                    sw.WriteLine(item.Text);
-                    sw.Flush();
-                    ticketCounts++;
-                }
-            }
-            sw.Close();
-            return ticketCounts;
-        }
-        #endregion
-
         #region 重置控件属性
         /// <summary>
         /// 重置控件属性
@@ -364,6 +296,7 @@ namespace Cinema
         /// <param name="e"></param>
         private void trv1_movieList_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            DeleteExtraTicketState();//在节点改变的情况下，自动删除多余的座位信息
             this.trv1_movieList.SelectedNode.BackColor = Color.DarkTurquoise;
             string nodeName = trv1_movieList.SelectedNode.Text.Trim();
             //判断是不是使用邀请码跳转的影片信息
@@ -418,7 +351,8 @@ namespace Cinema
                         break;
 
                     }
-                }//从文本文件中获取此时段该影片的售票信息
+                }
+                //从文本文件中获取此时段该影片的售票信息
                 // GetSellTicketSeats(filmName);
                 //从数据库中获取此时段该影片的售票信息并将获取结果显示在放映厅的座位状态上
                 SitulationOfTickets tiketsMsg = new SitulationOfTickets();
@@ -489,28 +423,6 @@ namespace Cinema
         }
         #endregion
 
-        #region 初始化LinkLablek控件
-        /// <summary>
-        /// 初始化LinkLablek控件
-        /// </summary>
-        public void InitControls(TabPage tp_videoHall, int videoHallId)
-        {
-            List<LinkLabel> lls1 = new List<LinkLabel>();
-            foreach (var item in tp_videoHall.Controls)
-            {
-                if (item is LinkLabel)
-                {
-                    lls1.Add(item as LinkLabel);
-                }
-            }
-            if (!ht.Contains(videoHallId))
-            {
-                ht.Add(videoHallId, lls1);
-            }
-        }
-
-        #endregion
-
         #region 座位点击事件
         /// <summary>
         /// 座位点击事件
@@ -528,6 +440,13 @@ namespace Cinema
                 tiketsMsg.FilmName = this.trv1_movieList.SelectedNode.Parent.Text.Trim();
                 List<LinkLabel> llinkLables = ht[videoHallid] as List<LinkLabel>;
                 LinkLabel l = sender as LinkLabel;
+                tiketsMsg.SeatsNumber = l.Text;
+                int i = fmb.GetTicketState(tiketsMsg);
+                if (!l.LinkVisited && fmb.GetTicketState(tiketsMsg) > 0)
+                {
+                    MessageBox.Show("对不起，该座位被锁定，请稍后子再试");
+                    return;
+                }
                 foreach (LinkLabel item in llinkLables)
                 {
                     if (l.Text == item.Text)
@@ -707,19 +626,6 @@ namespace Cinema
         }
         #endregion
 
-        #region 放映厅座位初始化，当放映厅改变时发生。
-        /// <summary>
-        /// 放映厅座位初始化，当放映厅改变时发生。
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tabcon_videoHall_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //List<LinkLabel> llinkelabels = new List<LinkLabel>();
-            //InitControls(tabcon_showList.TabPages[videoHallid], videoHallid);
-        }
-        #endregion
-
         #region 在选中treeview控件之前发生，更改选定内容的颜色
         /// <summary>
         /// 在选中控件之前发生，更改选定内容的颜色
@@ -769,10 +675,26 @@ namespace Cinema
         }
         #endregion
 
+        #region 当售票界面退出时，显示主功能界面
+        /// <summary>
+        ///当售票界面退出时，显示主功能界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SellTicket_FormClosed(object sender, FormClosedEventArgs e)
         {
             m.Show();
-        }
+        } 
+        #endregion
 
+        #region 删除额外的座位状态信息
+        /// <summary>
+        /// 删除额外的座位状态信息
+        /// </summary>
+        public void DeleteExtraTicketState()
+        {
+            fmb.DeleteExtraTicketState();
+        } 
+        #endregion
     }
 }

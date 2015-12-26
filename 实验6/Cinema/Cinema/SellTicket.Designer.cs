@@ -111,9 +111,11 @@
             this.trv1_movieList.TabIndex = 0;
             this.trv1_movieList.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.trv1_movieList_BeforeSelect);
             this.trv1_movieList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trv1_movieList_AfterSelect);
+            this.trv1_movieList.MouseEnter += new System.EventHandler(this.linkLb5_8_MouseEnter);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
@@ -206,49 +208,48 @@
             this.lbl_bestPrice.AutoSize = true;
             this.lbl_bestPrice.Location = new System.Drawing.Point(221, 161);
             this.lbl_bestPrice.Name = "lbl_bestPrice";
-            this.lbl_bestPrice.Size = new System.Drawing.Size(47, 12);
+            this.lbl_bestPrice.Size = new System.Drawing.Size(11, 12);
             this.lbl_bestPrice.TabIndex = 7;
-            this.lbl_bestPrice.Text = " ¥60.00";
+            this.lbl_bestPrice.Text = " ";
             // 
             // lbl_price
             // 
             this.lbl_price.AutoSize = true;
             this.lbl_price.Location = new System.Drawing.Point(221, 135);
             this.lbl_price.Name = "lbl_price";
-            this.lbl_price.Size = new System.Drawing.Size(47, 12);
+            this.lbl_price.Size = new System.Drawing.Size(11, 12);
             this.lbl_price.TabIndex = 6;
-            this.lbl_price.Text = " ¥60.00";
+            this.lbl_price.Text = " ";
             // 
             // lbl_filmTime
             // 
             this.lbl_filmTime.AutoSize = true;
             this.lbl_filmTime.Location = new System.Drawing.Point(222, 110);
             this.lbl_filmTime.Name = "lbl_filmTime";
-            this.lbl_filmTime.Size = new System.Drawing.Size(29, 12);
+            this.lbl_filmTime.Size = new System.Drawing.Size(11, 12);
             this.lbl_filmTime.TabIndex = 5;
-            this.lbl_filmTime.Text = "分钟";
+            this.lbl_filmTime.Text = " ";
             // 
             // lbl_filmType
             // 
             this.lbl_filmType.AutoSize = true;
             this.lbl_filmType.Location = new System.Drawing.Point(222, 81);
             this.lbl_filmType.Name = "lbl_filmType";
-            this.lbl_filmType.Size = new System.Drawing.Size(41, 12);
+            this.lbl_filmType.Size = new System.Drawing.Size(11, 12);
             this.lbl_filmType.TabIndex = 4;
-            this.lbl_filmType.Text = "Action";
+            this.lbl_filmType.Text = " ";
             // 
             // lbl_protagonist
             // 
             this.lbl_protagonist.AutoSize = true;
             this.lbl_protagonist.Location = new System.Drawing.Point(222, 51);
             this.lbl_protagonist.Name = "lbl_protagonist";
-            this.lbl_protagonist.Size = new System.Drawing.Size(65, 12);
+            this.lbl_protagonist.Size = new System.Drawing.Size(11, 12);
             this.lbl_protagonist.TabIndex = 3;
-            this.lbl_protagonist.Text = "托贝马圭尔";
+            this.lbl_protagonist.Text = " ";
             // 
             // pic_filmImg
             // 
-            this.pic_filmImg.Image = ((System.Drawing.Image)(resources.GetObject("pic_filmImg.Image")));
             this.pic_filmImg.Location = new System.Drawing.Point(27, 47);
             this.pic_filmImg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pic_filmImg.Name = "pic_filmImg";
@@ -262,21 +263,22 @@
             this.lbl_director.AutoSize = true;
             this.lbl_director.Location = new System.Drawing.Point(222, 23);
             this.lbl_director.Name = "lbl_director";
-            this.lbl_director.Size = new System.Drawing.Size(53, 12);
+            this.lbl_director.Size = new System.Drawing.Size(11, 12);
             this.lbl_director.TabIndex = 1;
-            this.lbl_director.Text = "萨姆莱米";
+            this.lbl_director.Text = " ";
             // 
             // lbl_filmName
             // 
             this.lbl_filmName.AutoSize = true;
             this.lbl_filmName.Location = new System.Drawing.Point(69, 23);
             this.lbl_filmName.Name = "lbl_filmName";
-            this.lbl_filmName.Size = new System.Drawing.Size(47, 12);
+            this.lbl_filmName.Size = new System.Drawing.Size(11, 12);
             this.lbl_filmName.TabIndex = 0;
-            this.lbl_filmName.Text = "蜘蛛人3";
+            this.lbl_filmName.Text = " ";
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.txt_giver);
             this.groupBox2.Controls.Add(this.cbo_stuDiscount);
             this.groupBox2.Controls.Add(this.labelGiver);
@@ -381,22 +383,25 @@
             // 
             // btn_confirm
             // 
+            this.btn_confirm.BackColor = System.Drawing.Color.Transparent;
             this.btn_confirm.Location = new System.Drawing.Point(521, 455);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(75, 23);
             this.btn_confirm.TabIndex = 9;
             this.btn_confirm.Text = "确定";
-            this.btn_confirm.UseVisualStyleBackColor = true;
+            this.btn_confirm.UseVisualStyleBackColor = false;
             this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
             // btnGiver
             // 
+            this.btnGiver.BackColor = System.Drawing.Color.Transparent;
             this.btnGiver.Location = new System.Drawing.Point(645, 455);
             this.btnGiver.Name = "btnGiver";
             this.btnGiver.Size = new System.Drawing.Size(75, 23);
             this.btnGiver.TabIndex = 10;
             this.btnGiver.Text = "使用邀请码";
-            this.btnGiver.UseVisualStyleBackColor = true;
+            this.btnGiver.UseVisualStyleBackColor = false;
+            this.btnGiver.Visible = false;
             this.btnGiver.Click += new System.EventHandler(this.btnGiver_Click);
             // 
             // imgLIst_FilmPic
@@ -407,7 +412,8 @@
             this.imgLIst_FilmPic.Images.SetKeyName(1, "蜘蛛侠3.jpg");
             this.imgLIst_FilmPic.Images.SetKeyName(2, "功夫熊猫.jpg");
             this.imgLIst_FilmPic.Images.SetKeyName(3, "火星救援.jpg");
-            this.imgLIst_FilmPic.Images.SetKeyName(4, "怦然心动.jpg");
+            this.imgLIst_FilmPic.Images.SetKeyName(4, "怦然星动.jpg");
+            this.imgLIst_FilmPic.Images.SetKeyName(5, "万万没想到.jpg");
             // 
             // SellTicket
             // 

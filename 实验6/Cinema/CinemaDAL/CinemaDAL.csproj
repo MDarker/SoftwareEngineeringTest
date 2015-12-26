@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOperationDAL.cs" />
     <Compile Include="FilmMsgDAL.cs" />
     <Compile Include="FilmToExcelDAL.cs" />
     <Compile Include="LoginDAL.cs" />

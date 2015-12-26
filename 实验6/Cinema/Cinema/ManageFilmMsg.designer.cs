@@ -32,17 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_FilmSourceM = new System.Windows.Forms.DataGridView();
-            this.FilmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FilmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FilmTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Director = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Protagonists = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FilmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FilmState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScheduleTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_Add = new System.Windows.Forms.Button();
             this.btn_Del = new System.Windows.Forms.Button();
             this.txt_FilmId = new System.Windows.Forms.TextBox();
@@ -73,11 +62,23 @@
             this.lbl_OldFilmId = new System.Windows.Forms.Label();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_TP = new System.Windows.Forms.Button();
+            this.FilmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilmTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Director = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Protagonists = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FilmState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScheduleTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_FilmSourceM)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_FilmSourceM
             // 
+            this.dgv_FilmSourceM.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -123,83 +124,6 @@
             this.dgv_FilmSourceM.Size = new System.Drawing.Size(520, 150);
             this.dgv_FilmSourceM.TabIndex = 0;
             this.dgv_FilmSourceM.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_FilmSourceM_CellClick);
-            // 
-            // FilmId
-            // 
-            this.FilmId.DataPropertyName = "FilmId";
-            this.FilmId.HeaderText = "电影Id";
-            this.FilmId.Name = "FilmId";
-            this.FilmId.ReadOnly = true;
-            // 
-            // FilmName
-            // 
-            this.FilmName.DataPropertyName = "FilmName";
-            this.FilmName.HeaderText = "电影名";
-            this.FilmName.Name = "FilmName";
-            this.FilmName.ReadOnly = true;
-            // 
-            // FilmTimes
-            // 
-            this.FilmTimes.DataPropertyName = "FilmTimes";
-            this.FilmTimes.HeaderText = "电影时长";
-            this.FilmTimes.Name = "FilmTimes";
-            this.FilmTimes.ReadOnly = true;
-            // 
-            // Director
-            // 
-            this.Director.DataPropertyName = "Director";
-            this.Director.HeaderText = "导演";
-            this.Director.Name = "Director";
-            this.Director.ReadOnly = true;
-            // 
-            // Protagonists
-            // 
-            this.Protagonists.DataPropertyName = "Protagonists";
-            this.Protagonists.HeaderText = "主演";
-            this.Protagonists.Name = "Protagonists";
-            this.Protagonists.ReadOnly = true;
-            // 
-            // FilmType
-            // 
-            this.FilmType.DataPropertyName = "FilmType";
-            this.FilmType.HeaderText = "类型";
-            this.FilmType.Name = "FilmType";
-            this.FilmType.ReadOnly = true;
-            // 
-            // Producers
-            // 
-            this.Producers.DataPropertyName = "Producers";
-            this.Producers.HeaderText = "发行";
-            this.Producers.Name = "Producers";
-            this.Producers.ReadOnly = true;
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "国家";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
-            // 
-            // FilmState
-            // 
-            this.FilmState.DataPropertyName = "FilmState";
-            this.FilmState.HeaderText = "电影状态";
-            this.FilmState.Name = "FilmState";
-            this.FilmState.ReadOnly = true;
-            // 
-            // ScheduleTime
-            // 
-            this.ScheduleTime.DataPropertyName = "ScheduleTime";
-            this.ScheduleTime.HeaderText = "排片次数";
-            this.ScheduleTime.Name = "ScheduleTime";
-            this.ScheduleTime.ReadOnly = true;
-            // 
-            // Deadline
-            // 
-            this.Deadline.DataPropertyName = "Deadline";
-            this.Deadline.HeaderText = "截止放映日期";
-            this.Deadline.Name = "Deadline";
-            this.Deadline.ReadOnly = true;
             // 
             // btn_Add
             // 
@@ -460,6 +384,7 @@
             this.btn_Cancel.TabIndex = 33;
             this.btn_Cancel.Text = "取消操作";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Visible = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_TP
@@ -471,6 +396,85 @@
             this.btn_TP.Text = "导出表模板";
             this.btn_TP.UseVisualStyleBackColor = true;
             this.btn_TP.Click += new System.EventHandler(this.btn_TP_Click);
+            // 
+            // FilmId
+            // 
+            this.FilmId.DataPropertyName = "FilmId";
+            this.FilmId.HeaderText = "电影Id";
+            this.FilmId.Name = "FilmId";
+            this.FilmId.ReadOnly = true;
+            // 
+            // FilmName
+            // 
+            this.FilmName.DataPropertyName = "FilmName";
+            this.FilmName.HeaderText = "电影名";
+            this.FilmName.Name = "FilmName";
+            this.FilmName.ReadOnly = true;
+            // 
+            // FilmTimes
+            // 
+            this.FilmTimes.DataPropertyName = "FilmTimes";
+            this.FilmTimes.HeaderText = "电影时长";
+            this.FilmTimes.Name = "FilmTimes";
+            this.FilmTimes.ReadOnly = true;
+            // 
+            // Director
+            // 
+            this.Director.DataPropertyName = "Director";
+            this.Director.HeaderText = "导演";
+            this.Director.Name = "Director";
+            this.Director.ReadOnly = true;
+            // 
+            // Protagonists
+            // 
+            this.Protagonists.DataPropertyName = "Protagonists";
+            this.Protagonists.HeaderText = "主演";
+            this.Protagonists.Name = "Protagonists";
+            this.Protagonists.ReadOnly = true;
+            // 
+            // FilmType
+            // 
+            this.FilmType.DataPropertyName = "FilmType";
+            this.FilmType.HeaderText = "类型";
+            this.FilmType.Name = "FilmType";
+            this.FilmType.ReadOnly = true;
+            // 
+            // Producers
+            // 
+            this.Producers.DataPropertyName = "Producers";
+            this.Producers.HeaderText = "发行";
+            this.Producers.Name = "Producers";
+            this.Producers.ReadOnly = true;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "国家";
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            // 
+            // FilmState
+            // 
+            this.FilmState.DataPropertyName = "FilmState";
+            this.FilmState.HeaderText = "电影状态";
+            this.FilmState.Name = "FilmState";
+            this.FilmState.ReadOnly = true;
+            this.FilmState.Visible = false;
+            // 
+            // ScheduleTime
+            // 
+            this.ScheduleTime.DataPropertyName = "ScheduleTime";
+            this.ScheduleTime.HeaderText = "排片次数";
+            this.ScheduleTime.Name = "ScheduleTime";
+            this.ScheduleTime.ReadOnly = true;
+            this.ScheduleTime.Visible = false;
+            // 
+            // Deadline
+            // 
+            this.Deadline.DataPropertyName = "Deadline";
+            this.Deadline.HeaderText = "截止放映日期";
+            this.Deadline.Name = "Deadline";
+            this.Deadline.ReadOnly = true;
             // 
             // ManageFilmMsg
             // 
@@ -552,6 +556,9 @@
         private System.Windows.Forms.Button btn_Modify;
         private System.Windows.Forms.DateTimePicker dtp_Deadline;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_OldFilmId;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_TP;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilmName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilmTimes;
@@ -563,8 +570,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FilmState;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScheduleTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deadline;
-        private System.Windows.Forms.Label lbl_OldFilmId;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_TP;
     }
 }

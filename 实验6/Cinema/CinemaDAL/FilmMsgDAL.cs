@@ -121,7 +121,7 @@ namespace CinemaDAL
         public int FilmDownLine(int filmId)
         {
             string sql = " update FilmsMsg " +
-                " set FilmType=-1 " +
+                " set FilmState=-1 " +
                 " where FilmId=@FilmId ";
             SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
             para.Value = filmId;
@@ -190,6 +190,20 @@ namespace CinemaDAL
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 影片是否排过
+        /// </summary>
+        /// <param name="filmId"></param>
+        /// <returns></returns>
+        public object IsSchedule(int filmId)
+        {
+            string sql = " select ScheduleTime from dbo.FilmsMsg " +
+                " where FilmId=@Filmid ";
+            SqlParameter para = new SqlParameter("@FilmId", SqlDbType.Int, 4);
+            para.Value = filmId;
+            return SQLHelper.ExecuteScalar(sql, para);
         }
 
         /// <summary>
@@ -453,6 +467,47 @@ namespace CinemaDAL
             paras[4].Value = ticketMsgs.SeatsNumber;
             paras[5].Value = 0;
             return SQLHelper.ExecuteNonQuery(sql, paras);
+        }
+        #endregion
+
+        /// <summary>
+        /// 判断座位的状态信息
+        /// </summary>
+        /// <param name="ticketMsg"></param>
+        /// <returns></returns>
+        public int GetTicketState(SitulationOfTickets ticketMsg)
+        {
+            string sql = "select COUNT(*) from [dbo].[SitulationOfTickets] ";
+            sql += "where ReleaseDates=@ReleaseDates and VideoHallId=@VideoHallId and  ";
+            sql += "Playtimes=@Playtimes and SeatsNumber=@SeatsNumber and SeatsState=0";
+            SqlParameter[] paras ={
+                                     new SqlParameter("@ReleaseDates",SqlDbType.VarChar,50),
+                                     new SqlParameter("@VideoHallId",SqlDbType.Int,4),
+                                     new SqlParameter("@FilmName",SqlDbType.VarChar,50),
+                                     new SqlParameter("@Playtimes",SqlDbType.VarChar,50),
+                                     new SqlParameter("@SeatsNumber",SqlDbType.VarChar,4),
+                                     new SqlParameter("@SeatsState",SqlDbType.Int,4)
+                                 };
+            paras[0].Value = ticketMsg.ReleaseDates;
+            paras[1].Value = ticketMsg.videoHallId;
+            paras[2].Value = ticketMsg.FilmName;
+            paras[3].Value = ticketMsg.Playtime;
+            paras[4].Value = ticketMsg.SeatsNumber;
+            paras[5].Value = ticketMsg.SeatsState;
+            return (int)SQLHelper.ExecuteScalar(sql, paras);
+
+        }
+
+        #region 删除额外的座位状态
+        /// <summary>
+        /// 删除额外的座位状态
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteExtraTicketState()
+        {
+            string sql = "delete [dbo].[SitulationOfTickets] ";
+            sql += "where SeatsState=0";
+            return SQLHelper.ExecuteNonQuery(sql);
         }
         #endregion
     }

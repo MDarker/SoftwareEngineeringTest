@@ -41,9 +41,12 @@ namespace CinemaDAL
         /// <returns></returns>
         public int ModifyVideoHall(int oldHallId, CommonVideoHall cvh)
         {
-            if (IsReapt(cvh.VideoHallId))
+            if (oldHallId != cvh.VideoHallId)
             {
-                return 0;
+                if (IsReapt(cvh.VideoHallId))
+                {
+                    return 0;
+                }
             }
             string sql = " update VideoHall " +
                 " set VideoHallId=@VideoHallId,Seatings=@Seatings, " +
@@ -105,7 +108,7 @@ namespace CinemaDAL
         }
 
         /// <summary>
-        /// 是否重复
+        /// 放映厅是否重复
         /// </summary>
         /// <param name="videoHallId"></param>
         /// <returns></returns>
@@ -121,6 +124,21 @@ namespace CinemaDAL
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 放映厅当天是否在使用，已经排片
+        /// </summary>
+        /// <param name="videoHallId"></param>
+        /// <returns></returns>
+        public SqlDataReader IsVideoHallUsing(int videoHallId)
+        {
+            string sql = " select ReleaseDates " +
+                " from FilmSchedule " +
+                 " where VideoHallId=@VideoHallId ";
+            SqlParameter para = new SqlParameter("@VideoHallId", SqlDbType.Int, 4);
+            para.Value = videoHallId;
+            return SQLHelper.ExecuteReader(sql, para);
         }
 
         #region 获取放映厅的信息

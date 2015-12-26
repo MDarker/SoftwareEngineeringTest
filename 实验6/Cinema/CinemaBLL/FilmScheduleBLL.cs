@@ -45,9 +45,11 @@ namespace CinemaBLL
             string strDate = nowDate.ToString();
             strDate = DateFormat.GetRightDateFormat(strDate);
             //删除下映电影的排片
-            filmSchedule.DeleteOverdueFilmId(strDate);
+            filmSchedule.DeleteDownlineFilm(strDate);
             //删除放映日期不是今天以及之后的排片（过期）的排片
-            filmSchedule.DeleteOverdueScheduleId(strDate);
+            filmSchedule.DeleteOverdueSchedule(strDate);
+            //删除已经删除的影片
+            filmSchedule.DeleteFilm();
             return filmSchedule.GetScheduledFilm();
         }
 

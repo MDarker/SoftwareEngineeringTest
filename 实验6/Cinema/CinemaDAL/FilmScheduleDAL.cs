@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
 using CinemaSQLHelper;
 using CinemaCommon;
 
@@ -109,7 +109,7 @@ namespace CinemaDAL
         /// </summary>
         /// <param name="strDate"></param>
         /// <returns></returns>
-        public int DeleteOverdueFilmId(string nowDate)
+        public int DeleteDownlineFilm(string nowDate)
         {
             string sql = " delete from FilmSchedule " +
                 " where FilmId in " +
@@ -124,7 +124,7 @@ namespace CinemaDAL
         /// </summary>
         /// <param name="nowDate"></param>
         /// <returns></returns>
-        public int DeleteOverdueScheduleId(string nowDate)
+        public int DeleteOverdueSchedule(string nowDate)
         {
             string sql = " select ScheduleId from FilmSchedule " +
                 " where ReleaseDates<@nowDate ";
@@ -137,6 +137,17 @@ namespace CinemaDAL
             }
             int scheduleId = (int)obj;
             return this.DeleteScheduledFilm(scheduleId);
+        }
+
+        /// <summary>
+        /// 删除已经删除的影片
+        /// </summary>
+        public void DeleteFilm()
+        {
+            string sql = " delete from FilmSchedule " +
+                " where FilmId not in (select FilmId " +
+                " from FilmsMsg) ";
+            SQLHelper.ExecuteNonQuery(sql, null);
         }
 
         /// <summary>

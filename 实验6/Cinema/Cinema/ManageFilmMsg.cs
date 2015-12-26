@@ -56,6 +56,7 @@ namespace Cinema
             if (btn_Add.Text.Contains("要"))
             {
                 CleanTxtControl();
+                btn_Cancel.Visible = true;
                 btn_Modify.Enabled = false;
                 btn_Del.Enabled = false;
                 btn_DownLine.Enabled = false;
@@ -95,6 +96,7 @@ namespace Cinema
             {
                 MessageBox.Show("添加失败");
             }
+            btn_Cancel.Visible = false;
             btn_Add.Text = "要添加";
             btn_Cancel_Click(sender, e);
         }
@@ -108,6 +110,7 @@ namespace Cinema
         {
             if (btn_Modify.Text.Contains("要"))
             {
+                btn_Cancel.Visible = true;
                 btn_Add.Enabled = false;
                 btn_Del.Enabled = false;
                 btn_DownLine.Enabled = false;
@@ -148,6 +151,7 @@ namespace Cinema
                 MessageBox.Show("修改失败");
             }
             btn_Modify.Text = "要修改";
+            btn_Cancel.Visible = false;
             btn_Cancel_Click(sender, e);
         }
 
@@ -171,6 +175,11 @@ namespace Cinema
             DialogResult dr = MessageBox.Show("是否确认删除" + txt_FilmName.Text, "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dr == DialogResult.No)
             {
+                return;
+            }
+            if (filmMsg.IsSchedule(filmId))
+            {
+                MessageBox.Show("该影片已排，你无权删除！！");
                 return;
             }
             filmMsg.DeleteFilm(filmId);
@@ -197,6 +206,11 @@ namespace Cinema
             DialogResult dr = MessageBox.Show("是否确认下映" + txt_FilmName.Text, "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dr == DialogResult.No)
             {
+                return;
+            }
+            if (filmMsg.IsSchedule(filmId))
+            {
+                MessageBox.Show("该影片已排，你无权下映！！");
                 return;
             }
             if (!filmMsg.FilmDownLine(filmId))
@@ -247,6 +261,7 @@ namespace Cinema
             txt_FilmType.Enabled = false;
             txt_Producers.Enabled = false;
             txt_Protagonists.Enabled = false;
+            btn_Cancel.Visible = false;
         }
 
         /// <summary>
@@ -380,6 +395,7 @@ namespace Cinema
                     filmToExcel.SqlBulkCopyImport(List, "FilmsMsg", dt);
                     GetFilmsMsg();
                     MessageBox.Show("导入成功");
+                    txt_FilePath.Text = "";
                 }
                 catch (Exception ex) { throw ex; }
                 GC.Collect();

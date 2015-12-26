@@ -60,6 +60,7 @@
             // 
             // dgv_VideoHallM
             // 
+            this.dgv_VideoHallM.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -282,6 +283,7 @@
             this.btn_Cancel.TabIndex = 34;
             this.btn_Cancel.Text = "取消操作";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Visible = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // lbl_OldHallId

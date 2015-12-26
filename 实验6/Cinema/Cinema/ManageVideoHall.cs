@@ -40,8 +40,19 @@ namespace Cinema
         /// <param name="e"></param>
         private void btn_Modify_Click(object sender, EventArgs e)
         {
+            try
+            {
+                oldHallId = Convert.ToInt32(lbl_OldHallId.Text);
+            }
+            catch { return; }
+            if (videoHall.IsVideoHallUsing(oldHallId))
+            {
+                MessageBox.Show("放映厅在使用，无法修改");
+                return;
+            }
             if (btn_Modify.Text.Contains("要"))
             {
+                btn_Cancel.Visible = true;
                 btn_Add.Enabled = false;
                 btn_Delete.Enabled = false;
                 lbl_ImportExport.Enabled = false;
@@ -50,15 +61,6 @@ namespace Cinema
                 txt_Row.Enabled = true;
                 txt_Col.Enabled = true;
                 btn_Modify.Text = "保存修改";
-                return;
-            }
-            try
-            {
-                oldHallId = Convert.ToInt32(lbl_OldHallId.Text);
-            }
-            catch
-            {
-                MessageBox.Show("请选择影片");
                 return;
             }
             CommonVideoHall cvh = new CommonVideoHall();
@@ -75,6 +77,7 @@ namespace Cinema
                 MessageBox.Show("修改失败");
             }
             btn_Modify.Text = "要修改";
+            btn_Cancel.Visible = false;
             GetVideoHall();
             btn_Cancel_Click(sender, e);
         }
@@ -89,6 +92,7 @@ namespace Cinema
             if (btn_Add.Text.Contains("要"))
             {
                 CleanTxtControl();
+                btn_Cancel.Visible = true;
                 btn_Modify.Enabled = false;
                 btn_Delete.Enabled = false;
                 lbl_ImportExport.Enabled = false;
@@ -107,7 +111,7 @@ namespace Cinema
             }
             catch
             {
-                MessageBox.Show("请输入正确的电影ID");
+                MessageBox.Show("请输入正确的放映厅ID");
                 return;
             }
             cvh.Seatings = Convert.ToInt32(txt_Seatings.Text);
@@ -124,6 +128,8 @@ namespace Cinema
                 MessageBox.Show("添加失败");
             }
             GetVideoHall();
+            btn_Cancel.Visible = false;
+            btn_Add.Text = "要添加";
             btn_Cancel_Click(sender, e);
         }
 
@@ -141,12 +147,17 @@ namespace Cinema
             }
             catch
             {
-                MessageBox.Show("请选择电影");
+                MessageBox.Show("请选择放映厅");
                 return;
             }
             DialogResult dr = MessageBox.Show("是否确认删除" + txt_VideoHallId.Text + "号放映厅", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (dr == DialogResult.No)
             {
+                return;
+            }
+            if (videoHall.IsVideoHallUsing(videoHallId))
+            {
+                MessageBox.Show("放映厅在使用，无法删除");
                 return;
             }
             videoHall.DeleteVideoHall(videoHallId);
@@ -188,6 +199,7 @@ namespace Cinema
             txt_Seatings.Enabled = false;
             txt_Row.Enabled = false;
             txt_Col.Enabled = false;
+            btn_Cancel.Visible = false;
         }
 
         /// <summary>
@@ -232,6 +244,7 @@ namespace Cinema
         private void DataTableToControl()
         {
             txt_VideoHallId.Text = dgv_VideoHallM.SelectedRows[0].Cells["VideoHallId"].Value.ToString();
+            lbl_OldHallId.Text = txt_VideoHallId.Text;
             txt_Seatings.Text = dgv_VideoHallM.SelectedRows[0].Cells["Seatings"].Value.ToString();
             txt_Row.Text = dgv_VideoHallM.SelectedRows[0].Cells["RowSeatNum"].Value.ToString();
             txt_Col.Text = dgv_VideoHallM.SelectedRows[0].Cells["ColumnSeatNum"].Value.ToString();
@@ -297,6 +310,7 @@ namespace Cinema
                     filmToExcel.SqlBulkCopyImport(List, "VideoHall", dt);
                     GetVideoHall();
                     MessageBox.Show("导入成功");
+                    txt_FilePath.Text = "";
                 }
                 catch (Exception ex) { throw ex; }
                 GC.Collect();
